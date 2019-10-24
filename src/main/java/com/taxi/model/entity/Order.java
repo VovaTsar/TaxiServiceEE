@@ -1,9 +1,7 @@
 package com.taxi.model.entity;
 
-import com.taxi.model.entity.enums.OrderStatus;
-
 public class Order {
-    private final int idOrder;
+    private final Long idOrder;
     private final OrderStatus orderStatus;
     private final User client;
     private final User driver;
@@ -29,7 +27,7 @@ public class Order {
         return new Builder();
     }
 
-    public int getIdOrder() {
+    public Long getIdOrder() {
         return idOrder;
     }
 
@@ -66,7 +64,7 @@ public class Order {
     }
 
     public static final class Builder {
-        private int idOrder;
+        private Long idOrder;
         private OrderStatus orderStatus;
         private User client;
         private User driver;
@@ -79,7 +77,7 @@ public class Order {
         private Builder() {
         }
 
-        public Builder withIdOrder(int idOrder) {
+        public Builder withIdOrder(Long idOrder) {
             this.idOrder = idOrder;
             return this;
         }

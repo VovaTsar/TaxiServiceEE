@@ -3,17 +3,17 @@ package com.taxi.model.entity;
 import java.util.Objects;
 
 public class Address {
-    private final int idAddress;
+    private final Long idAddress;
     private final String street;
     private final String houseNumber;
 
-    public Address(int idAddress, String street, String houseNumber) {
+    public Address(Long idAddress, String street, String houseNumber) {
         this.idAddress = idAddress;
         this.street = street;
         this.houseNumber = houseNumber;
     }
 
-    public int getIdAddress() {
+    public Long getIdAddress() {
         return idAddress;
     }
 

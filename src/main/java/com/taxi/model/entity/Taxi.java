@@ -3,19 +3,19 @@ package com.taxi.model.entity;
 import java.util.Objects;
 
 public class Taxi {
-    private final int idCar;
+    private final Long idCar;
     private final String carNumber;
     private final String brand;
     private final String carType;
 
-    public Taxi(int idCar, String carNumber, String brand, String carType) {
+    public Taxi(Long idCar, String carNumber, String brand, String carType) {
         this.idCar = idCar;
         this.carNumber = carNumber;
         this.brand = brand;
         this.carType = carType;
     }
 
-    public int getIdCar() {
+    public Long getIdCar() {
         return idCar;
     }
 

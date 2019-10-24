@@ -3,15 +3,15 @@ package com.taxi.model.entity;
 import java.util.Objects;
 
 public class Coupon {
-    private int idCoupon;
+    private Long idCoupon;
     private String couponName;
     private int discount;
 
-    public int getIdCoupon() {
+    public Long getIdCoupon() {
         return idCoupon;
     }
 
-    public void setIdCoupon(int idCoupon) {
+    public void setIdCoupon(Long idCoupon) {
         this.idCoupon = idCoupon;
     }
 
@@ -52,7 +52,7 @@ public class Coupon {
 
     @Override
     public String toString() {
-        return "Coupon{" +
+        return "CouponDao{" +
                 "idCoupon=" + idCoupon +
                 ", couponName='" + couponName + '\'' +
                 ", discount=" + discount +

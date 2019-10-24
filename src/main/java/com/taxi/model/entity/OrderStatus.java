@@ -1,4 +1,4 @@
-package com.taxi.model.entity.enums;
+package com.taxi.model.entity;
 
 public enum  OrderStatus {
     COMPLETE,EXECUTING

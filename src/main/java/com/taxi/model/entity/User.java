@@ -1,11 +1,9 @@
 package com.taxi.model.entity;
 
-import com.taxi.model.entity.enums.Role;
-
 import java.util.Objects;
 
 public class User {
-    private final int personId;
+    private final Long personId;
     private final String name;
     private final String surname;
     private final String password;
@@ -25,7 +23,7 @@ public class User {
         return new Builder();
     }
 
-    public int getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 
@@ -50,7 +48,7 @@ public class User {
     }
 
     public static final class Builder {
-        private int personId;
+        private Long personId;
         private String name;
         private String surname;
         private String password;
@@ -60,7 +58,7 @@ public class User {
         private Builder() {
         }
 
-        public Builder withPersonId(int personId) {
+        public Builder withPersonId(Long personId) {
             this.personId = personId;
             return this;
         }
