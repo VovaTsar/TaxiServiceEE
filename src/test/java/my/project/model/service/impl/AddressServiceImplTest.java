@@ -1,0 +1,88 @@
+package my.project.model.service.impl;
+
+import my.project.model.dao.AddressDao;
+import my.project.model.domain.Address;
+import my.project.model.entity.AddressEntity;
+import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.service.mapper.AddressMapper;
+import org.junit.After;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
+public class AddressServiceImplTest {
+    private static final Address address = Address.builder().withId(1).build();
+    private static final List<AddressEntity> entities = Arrays.asList(
+            AddressEntity.builder().withId(1).build(),
+            AddressEntity.builder().withId(2).build());
+    private static final List<Address> addresses = Arrays.asList(address,address);
+
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
+    @Mock
+    private AddressDao addressDao;
+
+    @Mock
+    private AddressMapper mapper;
+
+    @InjectMocks
+    private AddressServiceImpl service;
+
+    @After
+    public void resetMock() {
+        reset(addressDao);
+        reset(mapper);
+    }
+
+    @Test
+    public void shouldCreateAddress() {
+        when(mapper.mapAddressToAddressEntity(any(Address.class))).thenReturn(entities.get(1));
+        when(addressDao.save(any(AddressEntity.class))).thenReturn(true);
+
+        assertTrue(service.createAddress(address));
+    }
+
+    @Test
+    public void shouldThrowInvalidEntityCreationWithNullAddress() {
+        exception.expect(InvalidEntityCreation.class);
+        exception.expectMessage("AddressEntity is not valid");
+
+        service.createAddress(null);
+    }
+
+    @Test
+    public void shouldShowAllAddresses() {
+        when(addressDao.findAll()).thenReturn(entities);
+        when(mapper.mapAddressEntityToAddress(any(AddressEntity.class))).thenReturn(address);
+
+        List<Address> actual = service.findAllAddresses();
+
+        assertEquals(addresses, actual);
+    }
+
+    @Test
+    public void shouldReturnEmptyList() {
+        when(addressDao.findAll()).thenReturn(Collections.emptyList());
+
+        List<Address> actual = service.findAllAddresses();
+
+        assertEquals(Collections.emptyList(), actual);
+    }
+
+}
