@@ -56,8 +56,8 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
     protected void createStatementMapper(AddressEntity addressEntity, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, addressEntity.getStreet());
         preparedStatement.setInt(2, addressEntity.getHouse());
-        preparedStatement.setInt(3, addressEntity.getX());
-        preparedStatement.setInt(4, addressEntity.getY());
+        preparedStatement.setInt(3, addressEntity.getCoordinateX());
+        preparedStatement.setInt(4, addressEntity.getCoordinateY());
     }
 
     @Override
@@ -65,8 +65,8 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
         return Optional.of(AddressEntity.builder().withId(order.getInt(1))
                 .withStreet(order.getString(2))
                 .withHouse(order.getInt(3))
-                .withX(order.getInt(4))
-                .withY(order.getInt(5))
+                .withCoordinateX(order.getInt(4))
+                .withCoordinateY(order.getInt(5))
                 .build());
     }
 }

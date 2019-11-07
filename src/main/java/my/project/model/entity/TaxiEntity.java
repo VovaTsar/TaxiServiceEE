@@ -2,7 +2,6 @@ package my.project.model.entity;
 
 public class TaxiEntity {
     private final Integer id;
-    private final AddressEntity location;
     private final String carNumber;
     private final CarType carType;
     private final UserEntity driver;
@@ -10,7 +9,6 @@ public class TaxiEntity {
 
     private TaxiEntity(Builder builder) {
         this.id = builder.id;
-        this.location = builder.location;
         this.carNumber = builder.carNumber;
         this.carType = builder.carType;
         this.driver = builder.driver;
@@ -25,9 +23,6 @@ public class TaxiEntity {
         return id;
     }
 
-    public AddressEntity getLocation() {
-        return location;
-    }
 
     public String getCarNumber() {
         return carNumber;
@@ -47,7 +42,6 @@ public class TaxiEntity {
 
     public static final class Builder {
         private Integer id;
-        private AddressEntity location;
         private String carNumber;
         private CarType carType;
         private UserEntity driver;
@@ -61,10 +55,6 @@ public class TaxiEntity {
             return this;
         }
 
-        public Builder withLocation(AddressEntity location) {
-            this.location = location;
-            return this;
-        }
 
         public Builder withCarNumber(String carNumber) {
             this.carNumber = carNumber;

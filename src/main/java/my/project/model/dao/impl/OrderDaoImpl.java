@@ -11,10 +11,10 @@ import java.util.Optional;
 
 public class OrderDaoImpl extends AbstractDao<OrderEntity> implements OrderDao {
     private static final String INSERT_ORDER = "INSERT INTO tservice.orders(order_cost, order_startPoint, order_endPoint, order_status, user_id, taxi_id) VALUES(?, ?, ?, ?, ?, ?)";
-    private static final String FIND_BY_ID = "SELECT * FROM tservice.orders WHERE orders_id = ?";
+    private static final String FIND_BY_ID = "SELECT * FROM tservice.orders WHERE order_id = ?";
     private static final String FIND_ALL_ORDERS = "SELECT * FROM tservice.orders";
-    private static final String UPDATE_ORDER = "UPDATE tservice.orders SET order_cost = ?, order_startPoint = ?, order_endPoint = ?, order_status = ?, user_id = ?, taxi_id = ? WHERE orders_id = ?";
-    private static final String DELETE_BY_ID = "DELETE FROM tservice.orders WHERE orders_id = ?";
+    private static final String UPDATE_ORDER = "UPDATE tservice.orders SET order_cost = ?, order_startPoint = ?, order_endPoint = ?, order_status = ?, user_id = ?, taxi_id = ? WHERE order_id = ?";
+    private static final String DELETE_BY_ID = "DELETE FROM tservice.orders WHERE order_id = ?";
 
 
     public OrderDaoImpl(ConnectionPool connector) {

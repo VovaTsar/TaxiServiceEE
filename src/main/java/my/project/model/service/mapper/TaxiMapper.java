@@ -10,9 +10,6 @@ import my.project.model.entity.UserEntity;
 public class TaxiMapper {
     public TaxiEntity mapTaxiToTaxiEntity(Taxi domain) {
         return TaxiEntity.builder()
-                .withLocation(AddressEntity.builder()
-                        .withId(domain.getId())
-                        .build())
                 .withCarNumber(domain.getCarNumber())
                 .withCarType(domain.getCarType())
                 .withDriver(UserEntity.builder()
@@ -25,9 +22,6 @@ public class TaxiMapper {
     public Taxi mapTaxiEntityToTaxi(TaxiEntity entity) {
         return Taxi.builder()
                 .withId(entity.getId())
-                .withLocation(Address.builder()
-                        .withId(entity.getId())
-                        .build())
                 .withCarNumber(entity.getCarNumber())
                 .withCarType(entity.getCarType())
                 .withDriver(User.builder()
