@@ -22,10 +22,20 @@
     </select>
 </form>
 <form method="post">
+    <br>
+    <label for="username"><fmt:message key="registration.label.name" />:</label>
+    <input type="text" id="username" name="username">
+    <br>
+    <label for="username"><fmt:message key="registration.label.surname" />:</label>
+    <input type="text" id="username" name="username">
+    <br>
     <label for="username"><fmt:message key="login.label.email" />:</label>
     <input type="text" id="username" name="username">
     <br>
     <label for="password"><fmt:message key="login.label.password" />:</label>
+    <input type="password" id="password" name="password">
+    <br>
+    <label for="password"><fmt:message key="registration.label.confirmPassword" />:</label>
     <input type="password" id="password" name="password">
     <br>
     <fmt:message key="login.button.submit" var="buttonValue" />

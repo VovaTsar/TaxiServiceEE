@@ -22,10 +22,20 @@
     </select>
 </form>
 <form method="post">
+    <br>
+    <label for="username"><fmt:message key="registration.label.name" />:</label>
+    <input type="text" id="username" name="username">
+    <br>
+    <label for="username"><fmt:message key="registration.label.surname" />:</label>
+    <input type="text" id="username" name="username">
+    <br>
     <label for="username"><fmt:message key="login.label.email" />:</label>
     <input type="text" id="username" name="username">
     <br>
     <label for="password"><fmt:message key="login.label.password" />:</label>
+    <input type="password" id="password" name="password">
+    <br>
+    <label for="password"><fmt:message key="registration.label.confirmPassword" />:</label>
     <input type="password" id="password" name="password">
     <br>
     <fmt:message key="login.button.submit" var="buttonValue" />
@@ -33,7 +43,7 @@
 </form>
 <a href=registration.jsp>
     <fmt:message key="login.button.register" var="registerValue" />
-    <input type="submit" value="${registerValue}" class="btn btn-primary"></input>
+    <input type="submit" value="${registerValue}" class="btn btn-primary">
 </a>
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>

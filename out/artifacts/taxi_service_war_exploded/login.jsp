@@ -1,18 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: THY
-  Date: 04.11.2019
-  Time: 17:57
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: THY
-  Date: 30.10.2019
-  Time: 20:12
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page pageEncoding="UTF-8" %>
@@ -24,7 +10,8 @@
 <!DOCTYPE html>
 <html lang="${language}">
 <head>
-    <title>JSP/JSTL i18n demo</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
 <body>
 <form>
@@ -35,7 +22,7 @@
     </select>
 </form>
 <form method="post">
-    <label for="username"><fmt:message key="login.label.username" />:</label>
+    <label for="username"><fmt:message key="login.label.email" />:</label>
     <input type="text" id="username" name="username">
     <br>
     <label for="password"><fmt:message key="login.label.password" />:</label>
@@ -44,5 +31,12 @@
     <fmt:message key="login.button.submit" var="buttonValue" />
     <input type="submit" name="submit" value="${buttonValue}">
 </form>
+<a href=registration.jsp>
+    <fmt:message key="login.button.register" var="registerValue" />
+    <input type="submit" value="${registerValue}" class="btn btn-primary"></input>
+</a>
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 </body>
-</html>

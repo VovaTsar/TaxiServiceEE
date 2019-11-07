@@ -19,16 +19,16 @@ public class RegisterCommand implements Command {
         final String name = (String) request.getAttribute("name");
         final String surname = (String) request.getAttribute("surname");
         final String email = (String) request.getAttribute("email");
-
         final String password = (String) request.getAttribute("password");
         final String confirmedPassword = (String) request.getAttribute("confirmedPassword");
 
-        if (Objects.equals(password, confirmedPassword)) {
+        if (!Objects.equals(password, confirmedPassword)) {
             return "registration.jsp";
         }
         final User user = User.builder()
-                .withEmail(email)
                 .withName(name)
+                .withSurname(surname)
+                .withEmail(email)
                 .withPassword(password)
                 .build();
         userService.register(user);
