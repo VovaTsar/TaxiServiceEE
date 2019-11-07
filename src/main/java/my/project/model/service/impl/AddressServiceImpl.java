@@ -35,12 +35,15 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<Address> findAllAddresses() {
-        List<AddressEntity> result = addressDao.findAll();
-
+    public List<Address> findAll(int currentPage, int recordsPerPage) {
+        List<AddressEntity> result = addressDao.findAll(currentPage,recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapAddressEntityToAddress)
                 .collect(Collectors.toList());
+    }
+    @Override
+    public int getNumberOfRows() {
+        return addressDao.getNumberOfRows();
     }
 }

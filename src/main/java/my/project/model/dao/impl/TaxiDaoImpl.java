@@ -1,6 +1,7 @@
 package my.project.model.dao.impl;
 
 import my.project.model.dao.connector.ConnectionPool;
+import my.project.model.domain.Taxi;
 import my.project.model.entity.AddressEntity;
 import my.project.model.entity.TaxiEntity;
 import my.project.model.entity.CarType;
@@ -17,7 +18,8 @@ import java.util.Optional;
 public class TaxiDaoImpl extends AbstractDao<TaxiEntity> implements TaxiDao {
     private static final String INSERT_TAXI = "INSERT INTO tservice.taxis( taxi_number, taxi_type, taxi_driver, taxi_busy) VALUES(?, ?, ?, ? )";
     private static final String FIND_BY_ID = "SELECT * FROM tservice.taxis WHERE taxi_id = ?";
-    private static final String FIND_ALL_TAXIS = "SELECT * FROM tservice.taxis";
+    private static final String FIND_ALL_TAXIS = "SELECT * FROM tservice.taxis LIMIT ?, ?";
+    private static final String COUNT = "SELECT * FROM tservice.taxis";
     private static final String UPDATE_TAXI = "UPDATE tservice.taxis SET  taxi_number = ?, taxi_type = ?, taxi_driver = ?, taxi_busy = ? WHERE taxi_id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM tservice.taxis WHERE taxi_id = ?";
 
@@ -36,8 +38,8 @@ public class TaxiDaoImpl extends AbstractDao<TaxiEntity> implements TaxiDao {
     }
 
     @Override
-    public List<TaxiEntity> findAll() {
-        return findAll(FIND_ALL_TAXIS);
+    public List<TaxiEntity> findAll(int currentPage, int recordsPerPage) {
+        return findAll(FIND_ALL_TAXIS, currentPage, recordsPerPage);
     }
 
     @Override
@@ -48,6 +50,11 @@ public class TaxiDaoImpl extends AbstractDao<TaxiEntity> implements TaxiDao {
     @Override
     public boolean deleteById(Integer id) {
         return deleteById(id, DELETE_BY_ID);
+    }
+
+    @Override
+    public int getNumberOfRows() {
+        return getNumberOfRows(COUNT);
     }
 
     @Override

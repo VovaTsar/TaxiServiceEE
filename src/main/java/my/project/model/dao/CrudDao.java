@@ -8,9 +8,11 @@ public interface CrudDao<ID, E> {
 
     Optional<E> findById(ID id);
 
-    List<E> findAll();
+    List<E> findAll(int currentPage, int recordsPerPage);
 
     void update(E entity);
 
     boolean deleteById(ID id);
+
+    int getNumberOfRows();
 }

@@ -12,7 +12,8 @@ import java.util.Optional;
 public class OrderDaoImpl extends AbstractDao<OrderEntity> implements OrderDao {
     private static final String INSERT_ORDER = "INSERT INTO tservice.orders(order_cost, order_startPoint, order_endPoint, order_status, user_id, taxi_id) VALUES(?, ?, ?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM tservice.orders WHERE order_id = ?";
-    private static final String FIND_ALL_ORDERS = "SELECT * FROM tservice.orders";
+    private static final String FIND_ALL_ORDERS = "SELECT * FROM tservice.orders LIMIT ?, ?";
+    private static final String COUNT = "SELECT * FROM tservice.orders";
     private static final String UPDATE_ORDER = "UPDATE tservice.orders SET order_cost = ?, order_startPoint = ?, order_endPoint = ?, order_status = ?, user_id = ?, taxi_id = ? WHERE order_id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM tservice.orders WHERE order_id = ?";
 
@@ -32,8 +33,8 @@ public class OrderDaoImpl extends AbstractDao<OrderEntity> implements OrderDao {
     }
 
     @Override
-    public List<OrderEntity> findAll() {
-        return findAll(FIND_ALL_ORDERS);
+    public List<OrderEntity> findAll(int currentPage, int recordsPerPage) {
+        return findAll(FIND_ALL_ORDERS, currentPage, recordsPerPage);
     }
 
     @Override
@@ -45,6 +46,11 @@ public class OrderDaoImpl extends AbstractDao<OrderEntity> implements OrderDao {
     @Override
     public boolean deleteById(Integer id) {
         return deleteById(id, DELETE_BY_ID);
+    }
+
+    @Override
+    public int getNumberOfRows() {
+        return getNumberOfRows(COUNT);
     }
 
     @Override
@@ -89,7 +95,6 @@ public class OrderDaoImpl extends AbstractDao<OrderEntity> implements OrderDao {
         preparedStatement.setInt(6, orderEntity.getTaxiEntity().getId());
 
     }
-
 
 
     @Override

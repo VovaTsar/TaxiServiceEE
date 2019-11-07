@@ -35,12 +35,16 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public List<Coupon> findAllCoupons() {
-        List<CouponEntity> result = couponDao.findAll();
-
+    public List<Coupon> findAll(int currentPage, int recordsPerPage) {
+        List<CouponEntity> result = couponDao.findAll(currentPage,recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapCouponEntityToCoupon)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public int getNumberOfRows() {
+        return couponDao.getNumberOfRows();
     }
 }

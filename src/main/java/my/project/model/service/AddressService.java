@@ -7,5 +7,7 @@ import java.util.List;
 public interface AddressService {
     boolean createAddress(Address address);
 
-    List<Address> findAllAddresses();
+    List<Address> findAll(int currentPage, int recordsPerPage);
+
+    int getNumberOfRows();
 }

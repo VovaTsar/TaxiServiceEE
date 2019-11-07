@@ -12,7 +12,8 @@ import java.util.Optional;
 public class AddressDaoImpl extends AbstractDao<AddressEntity> implements AddressDao {
     private static final String INSERT_ADDRESS = "INSERT INTO tservice.addresses(address_street, address_house, address_x, address_y) VALUES(?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM tservice.addresses WHERE address_id = ?";
-    private static final String FIND_ALL_ADDRESSES = "SELECT * FROM tservice.addresses";
+    private static final String FIND_ALL_ADDRESSES = "SELECT * FROM tservice.addresses LIMIT ?, ?";
+    private static final String COUNT = "SELECT * FROM tservice.addresses";
     private static final String UPDATE_ADDRESS = "UPDATE tservice.addresses SET address_street = ?, address_house = ?, address_x = ?, address_y = ? WHERE address_id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM tservice.addresses WHERE address_id = ?";
 
@@ -32,10 +33,9 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
     }
 
     @Override
-    public List<AddressEntity> findAll() {
-        return findAll(FIND_ALL_ADDRESSES);
+    public List<AddressEntity> findAll(int currentPage, int recordsPerPage) {
+        return findAll(FIND_ALL_ADDRESSES, currentPage, recordsPerPage);
     }
-
     @Override
     public void update(AddressEntity entity) {
         update(entity, UPDATE_ADDRESS);
@@ -44,6 +44,11 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
     @Override
     public boolean deleteById(Integer id) {
         return deleteById(id, DELETE_BY_ID);
+    }
+
+    @Override
+    public int getNumberOfRows() {
+        return getNumberOfRows(COUNT);
     }
 
     @Override

@@ -19,7 +19,7 @@ public final class ConnectionPool {
         resource = ResourceBundle.getBundle(fileConfigName);
     }
 
-    public static Connection getConnection() {
+    public  Connection getConnection() {
         if (dataSource == null) {
             synchronized (DataSource.class) {
                 if (dataSource == null) {

@@ -7,5 +7,7 @@ import java.util.List;
 public interface TaxiService {
     boolean createTaxi(Taxi taxi);
 
-    List<Taxi> findAllTaxis();
+    List<Taxi> findAll(int currentPage, int recordsPerPage);
+
+    int getNumberOfRows();
 }

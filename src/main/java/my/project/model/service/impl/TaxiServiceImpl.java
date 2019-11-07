@@ -35,12 +35,16 @@ public class TaxiServiceImpl implements TaxiService {
     }
 
     @Override
-    public List<Taxi> findAllTaxis() {
-        List<TaxiEntity> result = taxiDao.findAll();
-
+    public List<Taxi> findAll(int currentPage, int recordsPerPage) {
+        List<TaxiEntity> result = taxiDao.findAll(currentPage,recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapTaxiEntityToTaxi)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public int getNumberOfRows() {
+        return taxiDao.getNumberOfRows();
     }
 }
