@@ -26,11 +26,11 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddressServiceImplTest {
-    private static final Address address = Address.builder().withId(1).build();
-    private static final List<AddressEntity> entities = Arrays.asList(
+    private static final Address ADDRESS = Address.builder().withId(1).build();
+    private static final List<AddressEntity> ENTITIES = Arrays.asList(
             AddressEntity.builder().withId(1).build(),
             AddressEntity.builder().withId(2).build());
-    private static final List<Address> addresses = Arrays.asList(address,address);
+    private static final List<Address> ADDRESSES = Arrays.asList(ADDRESS, ADDRESS);
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
@@ -46,16 +46,15 @@ public class AddressServiceImplTest {
 
     @After
     public void resetMock() {
-        reset(addressDao);
-        reset(mapper);
+        reset(addressDao,mapper);
     }
 
     @Test
     public void shouldCreateAddress() {
-        when(mapper.mapAddressToAddressEntity(any(Address.class))).thenReturn(entities.get(1));
+        when(mapper.mapAddressToAddressEntity(any(Address.class))).thenReturn(ENTITIES.get(1));
         when(addressDao.save(any(AddressEntity.class))).thenReturn(true);
 
-        assertTrue(service.createAddress(address));
+        assertTrue(service.createAddress(ADDRESS));
     }
 
     @Test
@@ -68,12 +67,12 @@ public class AddressServiceImplTest {
 
     @Test
     public void shouldShowAllAddresses() {
-        when(addressDao.findAll()).thenReturn(entities);
-        when(mapper.mapAddressEntityToAddress(any(AddressEntity.class))).thenReturn(address);
+        when(addressDao.findAll()).thenReturn(ENTITIES);
+        when(mapper.mapAddressEntityToAddress(any(AddressEntity.class))).thenReturn(ADDRESS);
 
         List<Address> actual = service.findAllAddresses();
 
-        assertEquals(addresses, actual);
+        assertEquals(ADDRESSES, actual);
     }
 
     @Test

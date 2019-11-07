@@ -15,8 +15,10 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.reset;
@@ -24,11 +26,11 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceImplTest {
-    private static final Order order = Order.builder().withId(1).build();
-    private static final List<OrderEntity> entities = Arrays.asList(
+    private static final Order ORDER = Order.builder().withId(1).build();
+    private static final List<OrderEntity> ENTITIES = Arrays.asList(
             OrderEntity.builder().withId(1).build(),
             OrderEntity.builder().withId(2).build());
-
+    private static final List<Order> ORDERS = Arrays.asList(ORDER, ORDER);
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
@@ -44,16 +46,15 @@ public class OrderServiceImplTest {
 
     @After
     public void resetMock() {
-        reset(orderDao);
-        reset(mapper);
+        reset(orderDao,mapper);
     }
 
     @Test
     public void shouldCreateOrder() {
-        when(mapper.mapOrderToOrderEntity(any(Order.class))).thenReturn(entities.get(1));
+        when(mapper.mapOrderToOrderEntity(any(Order.class))).thenReturn(ENTITIES.get(1));
         when(orderDao.save(any(OrderEntity.class))).thenReturn(true);
 
-        assertTrue(service.createOrder(order));
+        assertTrue(service.createOrder(ORDER));
     }
 
     @Test
@@ -62,6 +63,25 @@ public class OrderServiceImplTest {
         exception.expectMessage("OrderEntity is not valid");
 
         service.createOrder(null);
+    }
+
+    @Test
+    public void shouldShowAllOrders() {
+        when(orderDao.findAll()).thenReturn(ENTITIES);
+        when(mapper.mapOrderEntityToOrder(any(OrderEntity.class))).thenReturn(ORDER);
+
+        List<Order> actual = service.findAllOrders();
+
+        assertEquals(ORDERS, actual);
+    }
+
+    @Test
+    public void shouldReturnEmptyList() {
+        when(orderDao.findAll()).thenReturn(Collections.emptyList());
+
+        List<Order> actual = service.findAllOrders();
+
+        assertEquals(Collections.emptyList(), actual);
     }
 
 

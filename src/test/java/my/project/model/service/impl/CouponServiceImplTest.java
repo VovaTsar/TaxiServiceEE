@@ -25,11 +25,11 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CouponServiceImplTest {
-    private static final Coupon coupon = Coupon.builder().withId(1).build();
-    private static final List<CouponEntity> entities = Arrays.asList(
+    private static final Coupon COUPON = Coupon.builder().withId(1).build();
+    private static final List<CouponEntity> ENTITIES = Arrays.asList(
             CouponEntity.builder().withId(1).build(),
             CouponEntity.builder().withId(2).build());
-    private static final List<Coupon> coupons = Arrays.asList(coupon, coupon);
+    private static final List<Coupon> COUPONS = Arrays.asList(COUPON, COUPON);
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
@@ -45,16 +45,15 @@ public class CouponServiceImplTest {
 
     @After
     public void resetMock() {
-        reset(couponDao);
-        reset(mapper);
+        reset(mapper,couponDao);
     }
 
     @Test
     public void shouldCreateCoupon() {
-        when(mapper.mapCouponToCouponEntity(any(Coupon.class))).thenReturn(entities.get(1));
+        when(mapper.mapCouponToCouponEntity(any(Coupon.class))).thenReturn(ENTITIES.get(1));
         when(couponDao.save(any(CouponEntity.class))).thenReturn(true);
 
-        assertTrue(service.createCoupon(coupon));
+        assertTrue(service.createCoupon(COUPON));
     }
 
 
@@ -69,12 +68,12 @@ public class CouponServiceImplTest {
 
     @Test
     public void shouldShowAllCoupons() {
-        when(couponDao.findAll()).thenReturn(entities);
-        when(mapper.mapCouponEntityToCoupon(any(CouponEntity.class))).thenReturn(coupon);
+        when(couponDao.findAll()).thenReturn(ENTITIES);
+        when(mapper.mapCouponEntityToCoupon(any(CouponEntity.class))).thenReturn(COUPON);
 
         List<Coupon> actual = service.findAllCoupons();
 
-        assertEquals(coupons, actual);
+        assertEquals(COUPONS, actual);
     }
 
     @Test

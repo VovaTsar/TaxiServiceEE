@@ -25,11 +25,11 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TaxiServiceImplTest {
-    private static final Taxi taxi = Taxi.builder().withId(1).build();
-    private static final List<TaxiEntity> entities = Arrays.asList(
+    private static final Taxi TAXI = Taxi.builder().withId(1).build();
+    private static final List<TaxiEntity> ENTITIES = Arrays.asList(
             TaxiEntity.builder().withId(1).build(),
             TaxiEntity.builder().withId(2).build());
-    private static final List<Taxi> taxis = Arrays.asList(taxi,taxi);
+    private static final List<Taxi> TAXIS = Arrays.asList(TAXI, TAXI);
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
@@ -45,16 +45,15 @@ public class TaxiServiceImplTest {
 
     @After
     public void resetMock() {
-        reset(taxiDao);
-        reset(mapper);
+        reset(taxiDao,mapper);
     }
 
     @Test
     public void shouldCreateTaxi() {
-        when(mapper.mapTaxiToTaxiEntity(any(Taxi.class))).thenReturn(entities.get(1));
+        when(mapper.mapTaxiToTaxiEntity(any(Taxi.class))).thenReturn(ENTITIES.get(1));
         when(taxiDao.save(any(TaxiEntity.class))).thenReturn(true);
 
-        assertTrue(service.createTaxi(taxi));
+        assertTrue(service.createTaxi(TAXI));
     }
 
     @Test
@@ -67,12 +66,12 @@ public class TaxiServiceImplTest {
 
     @Test
     public void shouldShowAllTaxis() {
-        when(taxiDao.findAll()).thenReturn(entities);
-        when(mapper.mapTaxiEntityToTaxi(any(TaxiEntity.class))).thenReturn(taxi);
+        when(taxiDao.findAll()).thenReturn(ENTITIES);
+        when(mapper.mapTaxiEntityToTaxi(any(TaxiEntity.class))).thenReturn(TAXI);
 
         List<Taxi> actual = service.findAllTaxis();
 
-        assertEquals(taxis, actual);
+        assertEquals(TAXIS, actual);
     }
 
     @Test

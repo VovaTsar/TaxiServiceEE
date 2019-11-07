@@ -60,9 +60,7 @@ public class UserServiceImplTest {
 
     @After
     public void resetMock() {
-        reset(repository);
-        reset(validator);
-        reset(encoder);
+        reset(repository,validator,encoder);
     }
 
     @Test
