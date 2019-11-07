@@ -75,7 +75,7 @@ public final class ApplicationContextInjector {
         Map<String, Command> userCommandNameToCommand = new HashMap<>();
         userCommandNameToCommand.put("login", LOGIN_COMMAND);
         userCommandNameToCommand.put("logout", LOGOUT_COMMAND);
-        userCommandNameToCommand.put("registration", REGISTRATION_COMMAND);
+        userCommandNameToCommand.put("register", REGISTRATION_COMMAND);
         userCommandNameToCommand.put("showUsers", USER_SHOW_COMMAND);
         userCommandNameToCommand.put("showOrders", ORDER_SHOW_COMMAND);
         userCommandNameToCommand.put("showTaxis", TAXI_SHOW_COMMAND);

@@ -2,13 +2,13 @@
 INSERT INTO tservice.users
 (user_name,user_surname,user_email,user_password,user_role)
 VALUES
-('Vania', 'Zichenko', 'vania@gmail.com','12345', 'CLIENT'),
-('Yura', 'Senin', 'yura@gmail.com','12345', 'CLIENT'),
+('Vania', 'Zichenko', 'vania@gmail.com','12345', 'USER'),
+('Yura', 'Senin', 'yura@gmail.com','12345', 'USER'),
 ('admin', 'admin', 'admin@gmail.com', '12345', 'ADMIN'),
 ('Vasia', 'Zaichenko', 'vasia@gmail.com', '12345', 'DRIVER'),
 ('Petro', 'Petrovich', 'petro@gmail.com', '12345', 'DRIVER'),
-('Anton', 'Antonovich', 'anton@gmail.com','12345', 'CLIENT'),
-('Victor', 'Vicrorovich', 'victor@gmail.com','12345', 'CLIENT'),
+('Anton', 'Antonovich', 'anton@gmail.com','12345', 'USER'),
+('Victor', 'Vicrorovich', 'victor@gmail.com','12345', 'USER'),
 ('Vlad', 'Vladislavovich', 'vlad@gmail.com', '12345', 'DRIVER');
 
 

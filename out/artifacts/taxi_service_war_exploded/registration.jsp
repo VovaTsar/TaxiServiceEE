@@ -21,30 +21,28 @@
 
     </select>
 </form>
-<form method="post">
+
+<form action="login" method="post" >
     <br>
-    <label for="username"><fmt:message key="registration.label.name" />:</label>
-    <input type="text" id="username" name="username">
+    <label for="name"><fmt:message key="registration.label.name" />:</label>
+    <input type="text" id="name" name="name">
     <br>
-    <label for="username"><fmt:message key="registration.label.surname" />:</label>
-    <input type="text" id="username" name="username">
+    <label for="surname"><fmt:message key="registration.label.surname" />:</label>
+    <input type="text" id="surname" name="surname">
     <br>
-    <label for="username"><fmt:message key="login.label.email" />:</label>
-    <input type="text" id="username" name="username">
+    <label for="email"><fmt:message key="login.label.email" />:</label>
+    <input type="text" id="email" name="email">
     <br>
     <label for="password"><fmt:message key="login.label.password" />:</label>
     <input type="password" id="password" name="password">
     <br>
-    <label for="password"><fmt:message key="registration.label.confirmPassword" />:</label>
-    <input type="password" id="password" name="password">
+    <label for="confirmPassword"><fmt:message key="registration.label.confirmPassword" />:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword">
     <br>
-    <fmt:message key="login.button.submit" var="buttonValue" />
-    <input type="submit" name="submit" value="${buttonValue}">
+    <fmt:message key="login.button.submit" var="register" />
+    <input type="submit" name="commandSecurity" value="register">
 </form>
-<a href=registration.jsp>
-    <fmt:message key="login.button.register" var="registerValue" />
-    <input type="submit" value="${registerValue}" class="btn btn-primary"></input>
-</a>
+
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
