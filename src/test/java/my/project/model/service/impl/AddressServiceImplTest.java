@@ -67,19 +67,19 @@ public class AddressServiceImplTest {
 
     @Test
     public void shouldShowAllAddresses() {
-        when(addressDao.findAll()).thenReturn(ENTITIES);
+        when(addressDao.findAll(1,2)).thenReturn(ENTITIES);
         when(mapper.mapAddressEntityToAddress(any(AddressEntity.class))).thenReturn(ADDRESS);
 
-        List<Address> actual = service.findAllAddresses();
+        List<Address> actual = service.findAll(1,2);
 
         assertEquals(ADDRESSES, actual);
     }
 
     @Test
     public void shouldReturnEmptyList() {
-        when(addressDao.findAll()).thenReturn(Collections.emptyList());
+        when(addressDao.findAll(1,2)).thenReturn(Collections.emptyList());
 
-        List<Address> actual = service.findAllAddresses();
+        List<Address> actual = service.findAll(1,2);
 
         assertEquals(Collections.emptyList(), actual);
     }

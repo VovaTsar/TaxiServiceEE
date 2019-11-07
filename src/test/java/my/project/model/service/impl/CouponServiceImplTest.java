@@ -68,19 +68,19 @@ public class CouponServiceImplTest {
 
     @Test
     public void shouldShowAllCoupons() {
-        when(couponDao.findAll()).thenReturn(ENTITIES);
+        when(couponDao.findAll(1,2)).thenReturn(ENTITIES);
         when(mapper.mapCouponEntityToCoupon(any(CouponEntity.class))).thenReturn(COUPON);
 
-        List<Coupon> actual = service.findAllCoupons();
+        List<Coupon> actual = service.findAll(1,2);
 
         assertEquals(COUPONS, actual);
     }
 
     @Test
     public void shouldReturnEmptyList() {
-        when(couponDao.findAll()).thenReturn(Collections.emptyList());
+        when(couponDao.findAll(1,2)).thenReturn(Collections.emptyList());
 
-        List<Coupon> actual = service.findAllCoupons();
+        List<Coupon> actual = service.findAll(1,2);
 
         assertEquals(Collections.emptyList(), actual);
     }

@@ -67,19 +67,19 @@ public class OrderServiceImplTest {
 
     @Test
     public void shouldShowAllOrders() {
-        when(orderDao.findAll()).thenReturn(ENTITIES);
+        when(orderDao.findAll(1,2)).thenReturn(ENTITIES);
         when(mapper.mapOrderEntityToOrder(any(OrderEntity.class))).thenReturn(ORDER);
 
-        List<Order> actual = service.findAllOrders();
+        List<Order> actual = service.findAll(1,2);
 
         assertEquals(ORDERS, actual);
     }
 
     @Test
     public void shouldReturnEmptyList() {
-        when(orderDao.findAll()).thenReturn(Collections.emptyList());
+        when(orderDao.findAll(1,2)).thenReturn(Collections.emptyList());
 
-        List<Order> actual = service.findAllOrders();
+        List<Order> actual = service.findAll(1,2);
 
         assertEquals(Collections.emptyList(), actual);
     }

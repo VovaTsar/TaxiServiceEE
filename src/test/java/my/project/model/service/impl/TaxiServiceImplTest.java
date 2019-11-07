@@ -66,19 +66,19 @@ public class TaxiServiceImplTest {
 
     @Test
     public void shouldShowAllTaxis() {
-        when(taxiDao.findAll()).thenReturn(ENTITIES);
+        when(taxiDao.findAll(1,2)).thenReturn(ENTITIES);
         when(mapper.mapTaxiEntityToTaxi(any(TaxiEntity.class))).thenReturn(TAXI);
 
-        List<Taxi> actual = service.findAllTaxis();
+        List<Taxi> actual = service.findAll(1,2);
 
         assertEquals(TAXIS, actual);
     }
 
     @Test
     public void shouldReturnEmptyList() {
-        when(taxiDao.findAll()).thenReturn(Collections.emptyList());
+        when(taxiDao.findAll(1,2)).thenReturn(Collections.emptyList());
 
-        List<Taxi> actual = service.findAllTaxis();
+        List<Taxi> actual = service.findAll(1,2);
 
         assertEquals(Collections.emptyList(), actual);
     }
