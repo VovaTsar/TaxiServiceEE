@@ -22,7 +22,7 @@
     </select>
 </form>
 
-<form action="login" method="post" >
+<form action="user" method="post" >
     <br>
     <label for="name"><fmt:message key="registration.label.name" />:</label>
     <input type="text" id="name" name="name">
@@ -40,7 +40,7 @@
     <input type="password" id="confirmPassword" name="confirmPassword">
     <br>
     <fmt:message key="login.button.submit" var="register" />
-    <input type="submit" name="commandSecurity" value="register">
+    <input type="submit" name="command" value="register" >
 </form>
 
 

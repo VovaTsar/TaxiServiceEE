@@ -3,9 +3,9 @@ package my.project.model.service.impl;
 import my.project.model.dao.UserDao;
 import my.project.model.domain.User;
 import my.project.model.entity.UserEntity;
-import my.project.model.exception.AlreadyRegisteredException;
-import my.project.model.exception.InvalidRegistrationException;
-import my.project.model.exception.UserNotFoundException;
+import my.project.model.exception.AlreadyRegisteredRuntimeException;
+import my.project.model.exception.RegistrationRuntimeException;
+import my.project.model.exception.UserNotFoundRuntimeException;
 import my.project.model.service.encoder.PasswordEncoder;
 import my.project.model.service.mapper.UserMapper;
 import my.project.model.service.validator.UserValidator;
@@ -75,7 +75,7 @@ public class UserServiceImplTest {
 
     @Test
     public void shouldThrowRuntimeExceptionWhenRegisterUser() {
-        exception.expect(AlreadyRegisteredException.class);
+        exception.expect(AlreadyRegisteredRuntimeException.class);
         exception.expectMessage("UserEntity is already registered by this e-mail");
 
         when(repository.findByEmail(any(String.class))).thenReturn(Optional.ofNullable(entity));
@@ -86,9 +86,9 @@ public class UserServiceImplTest {
 
     @Test
     public void shouldThrowInvalidRegistrationExceptionWhenRegisterNullUser() {
-        exception.expect(InvalidRegistrationException.class);
+        exception.expect(RegistrationRuntimeException.class);
 
-        doThrow(InvalidRegistrationException.class).when(validator).validate(null);
+        doThrow(RegistrationRuntimeException.class).when(validator).validate(null);
         userService.register(null);
     }
 
@@ -105,7 +105,7 @@ public class UserServiceImplTest {
 
     @Test
     public void shouldThrowUserNotFoundExceptionWithIncorrectPassword() {
-        exception.expect(UserNotFoundException.class);
+        exception.expect(UserNotFoundRuntimeException.class);
         exception.expectMessage("Incorrect password");
 
         when(encoder.encode(any(String.class))).thenReturn(Optional.of("test"));

@@ -1,9 +1,7 @@
 package my.project.model.service.impl;
 
-import my.project.model.domain.Coupon;
-import my.project.model.entity.CouponEntity;
 import my.project.model.entity.OrderEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import org.apache.log4j.Logger;
 import my.project.model.dao.OrderDao;
 import my.project.model.domain.Order;
@@ -30,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
     public boolean createOrder(Order order) {
         if (Objects.isNull(order) ) {
             LOGGER.warn("OrderEntity is not valid");
-            throw new InvalidEntityCreation("OrderEntity is not valid");
+            throw new EntityCreationRuntimeException("OrderEntity is not valid");
         }
 
         return orderDao.save(mapper.mapOrderToOrderEntity(order));

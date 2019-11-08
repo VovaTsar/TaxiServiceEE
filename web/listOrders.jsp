@@ -40,7 +40,7 @@
     <ul class="pagination">
         <c:if test="${currentPage != 1}">
             <li class="page-item"><a class="page-link"
-                                     href="user?recordsPerPage=${recordsPerPage}&currentPage=${currentPage-1}&commandShow=${showOrders}">Previous</a>
+                                     href="user?recordsPerPage=${recordsPerPage}&currentPage=${currentPage-1}&command=${showOrders}">Previous</a>
             </li>
         </c:if>
 
@@ -53,7 +53,7 @@
                 </c:when>
                 <c:otherwise>
                     <li class="page-item"><a class="page-link"
-                                             href="user?recordsPerPage=${recordsPerPage}&currentPage=${i}&commandShow=${showOrders}">${i}</a>
+                                             href="user?recordsPerPage=${recordsPerPage}&currentPage=${i}&command=${showOrders}">${i}</a>
                     </li>
                 </c:otherwise>
             </c:choose>
@@ -61,7 +61,7 @@
 
         <c:if test="${currentPage lt noOfPages}">
             <li class="page-item"><a class="page-link"
-                                     href="user?recordsPerPage=${recordsPerPage}&currentPage=${currentPage+1}&commandShow=${showOrders}">Next</a>
+                                     href="user?recordsPerPage=${recordsPerPage}&currentPage=${currentPage+1}&command=${showOrders}">Next</a>
             </li>
         </c:if>
     </ul>

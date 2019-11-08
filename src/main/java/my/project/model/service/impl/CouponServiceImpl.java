@@ -1,6 +1,6 @@
 package my.project.model.service.impl;
 
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import org.apache.log4j.Logger;
 import my.project.model.domain.Coupon;
 import my.project.model.entity.CouponEntity;
@@ -28,7 +28,7 @@ public class CouponServiceImpl implements CouponService {
     public boolean createCoupon(Coupon coupon) {
         if (Objects.isNull(coupon) ) {
             LOGGER.warn("Coupon is not valid");
-            throw new InvalidEntityCreation("Coupon is not valid");
+            throw new EntityCreationRuntimeException("Coupon is not valid");
         }
 
         return couponDao.save(mapper.mapCouponToCouponEntity(coupon));

@@ -3,7 +3,7 @@ package my.project.model.service.impl;
 import my.project.model.dao.CouponDao;
 import my.project.model.domain.Coupon;
 import my.project.model.entity.CouponEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.CouponMapper;
 import org.junit.After;
 import org.junit.Rule;
@@ -60,7 +60,7 @@ public class CouponServiceImplTest {
 
     @Test
     public void shouldThrowInvalidEntityCreationWithNullCoupon() {
-        exception.expect(InvalidEntityCreation.class);
+        exception.expect(EntityCreationRuntimeException.class);
         exception.expectMessage("Coupon is not valid");
 
         service.createCoupon(null);

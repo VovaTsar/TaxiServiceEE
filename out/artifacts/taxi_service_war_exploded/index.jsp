@@ -19,7 +19,7 @@
 
     <label for="records">Select records per page:</label>
 
-    <select class="form-control" id="records" name="commandShow">
+    <select class="form-control" id="records" name="command">
       <option value="showUsers">Users</option>
       <option value="showOrders" selected>Orders</option>
       <option value="showTaxis">Taxis</option>
@@ -32,7 +32,12 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
-
+<form>
+  <form action = "user" method="post">
+    <fmt:message key="user.button.logout" var="login" />
+    <input type="submit" name="command" value="logout">
+  </form>
+</form>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" ></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" ></script>

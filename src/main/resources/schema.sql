@@ -6,7 +6,7 @@ CREATE TABLE tservice.users (
   user_surname varchar(45) NOT NULL,
   user_email varchar(45) NOT NULL,
   user_password varchar(45) NOT NULL,
-  user_role varchar(35) NOT NULL DEFAULT 'USER'
+  user_role varchar(35) NOT NULL DEFAULT 'CLIENT'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE tservice.addresses (

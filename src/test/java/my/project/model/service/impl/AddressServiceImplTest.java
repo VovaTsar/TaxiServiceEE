@@ -3,7 +3,7 @@ package my.project.model.service.impl;
 import my.project.model.dao.AddressDao;
 import my.project.model.domain.Address;
 import my.project.model.entity.AddressEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.AddressMapper;
 import org.junit.After;
 import org.junit.Rule;
@@ -59,7 +59,7 @@ public class AddressServiceImplTest {
 
     @Test
     public void shouldThrowInvalidEntityCreationWithNullAddress() {
-        exception.expect(InvalidEntityCreation.class);
+        exception.expect(EntityCreationRuntimeException.class);
         exception.expectMessage("AddressEntity is not valid");
 
         service.createAddress(null);

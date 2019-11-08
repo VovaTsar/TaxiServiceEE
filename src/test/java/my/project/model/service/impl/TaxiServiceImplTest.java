@@ -3,7 +3,7 @@ package my.project.model.service.impl;
 import my.project.model.dao.TaxiDao;
 import my.project.model.domain.Taxi;
 import my.project.model.entity.TaxiEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.TaxiMapper;
 import org.junit.After;
 import org.junit.Rule;
@@ -58,7 +58,7 @@ public class TaxiServiceImplTest {
 
     @Test
     public void shouldThrowInvalidEntityCreationWithNullTaxi() {
-        exception.expect(InvalidEntityCreation.class);
+        exception.expect(EntityCreationRuntimeException.class);
         exception.expectMessage("TaxiEntity is not valid");
 
         service.createTaxi(null);

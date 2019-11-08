@@ -3,7 +3,7 @@ package my.project.model.service.impl;
 import my.project.model.dao.OrderDao;
 import my.project.model.domain.Order;
 import my.project.model.entity.OrderEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.OrderMapper;
 import org.junit.After;
 import org.junit.Rule;
@@ -59,7 +59,7 @@ public class OrderServiceImplTest {
 
     @Test
     public void shouldThrowInvalidEntityCreationWithNullOrder() {
-        exception.expect(InvalidEntityCreation.class);
+        exception.expect(EntityCreationRuntimeException.class);
         exception.expectMessage("OrderEntity is not valid");
 
         service.createOrder(null);

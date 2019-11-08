@@ -31,7 +31,7 @@ public class RegisterCommand implements Command {
                 .withSurname(surname)
                 .withEmail(email)
                 .withPassword(password)
-                .withRole(Role.USER)
+                .withRole(Role.CLIENT)
                 .build();
         userService.register(user);
         return "login.jsp";

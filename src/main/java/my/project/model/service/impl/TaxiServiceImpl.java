@@ -1,7 +1,7 @@
 package my.project.model.service.impl;
 
 import my.project.model.domain.Taxi;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.TaxiMapper;
 import org.apache.log4j.Logger;
 import my.project.model.entity.TaxiEntity;
@@ -28,7 +28,7 @@ public class TaxiServiceImpl implements TaxiService {
     public boolean createTaxi(Taxi taxi) {
         if (Objects.isNull(taxi) ) {
             LOGGER.warn("TaxiEntity is not valid");
-            throw new InvalidEntityCreation("TaxiEntity is not valid");
+            throw new EntityCreationRuntimeException("TaxiEntity is not valid");
         }
 
         return taxiDao.save(mapper.mapTaxiToTaxiEntity(taxi));
