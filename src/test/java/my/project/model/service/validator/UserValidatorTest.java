@@ -1,7 +1,7 @@
 package my.project.model.service.validator;
 
 import my.project.model.domain.User;
-import my.project.model.exception.InvalidRegistrationException;
+import my.project.model.exception.RegistrationRuntimeException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class UserValidatorTest {
 
     @Test
     public void shouldThrowInvalidRegistrationExceptionValidatingNullUser() {
-        exception.expect(InvalidRegistrationException.class);
+        exception.expect(RegistrationRuntimeException.class);
         exception.expectMessage("UserEntity is not valid");
 
         validator.validate(null);
@@ -28,8 +28,8 @@ public class UserValidatorTest {
 
     @Test
     public void shouldThrowInvalidRegistrationExceptionValidatingInvalidName() {
-        User student = User.builder().withName("name").build();
-        exception.expect(InvalidRegistrationException.class);
+        User student = User.builder().withName("n").build();
+        exception.expect(RegistrationRuntimeException.class);
         exception.expectMessage("Incorrect name");
 
         validator.validate(student);
@@ -38,9 +38,9 @@ public class UserValidatorTest {
     @Test
     public void shouldThrowInvalidRegistrationExceptionValidatingInvalidSurname() {
         User student = User.builder().withName("Name").
-                withSurname("surname").
+                withSurname("s").
                 build();
-        exception.expect(InvalidRegistrationException.class);
+        exception.expect(RegistrationRuntimeException.class);
         exception.expectMessage("Incorrect surname");
 
         validator.validate(student);
@@ -52,7 +52,7 @@ public class UserValidatorTest {
                 withSurname("Surname").
                 withEmail("uncorrect").
                 build();
-        exception.expect(InvalidRegistrationException.class);
+        exception.expect(RegistrationRuntimeException.class);
         exception.expectMessage("Incorrect e-mail");
 
         validator.validate(student);
@@ -65,7 +65,7 @@ public class UserValidatorTest {
                 withEmail("correct@gmail.com").
                 withPassword("bad").
                 build();
-        exception.expect(InvalidRegistrationException.class);
+        exception.expect(RegistrationRuntimeException.class);
         exception.expectMessage("Incorrect password");
 
         validator.validate(student);

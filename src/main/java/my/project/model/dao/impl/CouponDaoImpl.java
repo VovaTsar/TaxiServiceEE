@@ -1,5 +1,6 @@
 package my.project.model.dao.impl;
 
+import my.project.model.domain.Coupon;
 import my.project.model.entity.OrderEntity;
 import my.project.model.entity.CouponEntity;
 import my.project.model.entity.UserEntity;
@@ -16,7 +17,8 @@ import java.util.Optional;
 public class CouponDaoImpl extends AbstractDao<CouponEntity> implements CouponDao {
     private static final String INSERT_COUPON = "INSERT INTO tservice.coupons(coupon_discount, user_id, order_id) VALUES(?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM tservice.coupons WHERE coupon_id = ?";
-    private static final String FIND_ALL_COUPONS = "SELECT * FROM tservice.coupons";
+    private static final String FIND_ALL_COUPONS = "SELECT * FROM tservice.coupons LIMIT ?, ?";
+    private static final String COUNT = "SELECT * FROM tservice.coupons";
     private static final String UPDATE_COUPON = "UPDATE tservice.coupons SET coupon_discount = ?, user_id = ? , order_id = ?  WHERE coupon_id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM tservice.coupons WHERE coupon_id = ?";
 
@@ -35,8 +37,8 @@ public class CouponDaoImpl extends AbstractDao<CouponEntity> implements CouponDa
     }
 
     @Override
-    public List<CouponEntity> findAll() {
-        return findAll(FIND_ALL_COUPONS);
+    public List<CouponEntity> findAll(int currentPage, int recordsPerPage) {
+        return findAll(FIND_ALL_COUPONS, currentPage, recordsPerPage);
     }
 
     @Override
@@ -47,6 +49,11 @@ public class CouponDaoImpl extends AbstractDao<CouponEntity> implements CouponDa
     @Override
     public boolean deleteById(Integer id) {
         return deleteById(id, DELETE_BY_ID);
+    }
+
+    @Override
+    public int getNumberOfRows() {
+        return getNumberOfRows(COUNT);
     }
 
     @Override

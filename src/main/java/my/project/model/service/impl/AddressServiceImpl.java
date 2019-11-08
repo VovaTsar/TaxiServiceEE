@@ -1,6 +1,6 @@
 package my.project.model.service.impl;
 
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import org.apache.log4j.Logger;
 import my.project.model.dao.AddressDao;
 import my.project.model.domain.Address;
@@ -28,19 +28,22 @@ public class AddressServiceImpl implements AddressService {
     public boolean createAddress(Address address) {
         if (Objects.isNull(address) ) {
             LOGGER.warn("AddressEntity is not valid");
-            throw new InvalidEntityCreation("AddressEntity is not valid");
+            throw new EntityCreationRuntimeException("AddressEntity is not valid");
         }
 
         return addressDao.save(mapper.mapAddressToAddressEntity(address));
     }
 
     @Override
-    public List<Address> findAllAddresses() {
-        List<AddressEntity> result = addressDao.findAll();
-
+    public List<Address> findAll(int currentPage, int recordsPerPage) {
+        List<AddressEntity> result = addressDao.findAll(currentPage,recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapAddressEntityToAddress)
                 .collect(Collectors.toList());
+    }
+    @Override
+    public int getNumberOfRows() {
+        return addressDao.getNumberOfRows();
     }
 }

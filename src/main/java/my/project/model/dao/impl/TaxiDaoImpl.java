@@ -1,6 +1,7 @@
 package my.project.model.dao.impl;
 
 import my.project.model.dao.connector.ConnectionPool;
+import my.project.model.domain.Taxi;
 import my.project.model.entity.AddressEntity;
 import my.project.model.entity.TaxiEntity;
 import my.project.model.entity.CarType;
@@ -15,10 +16,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class TaxiDaoImpl extends AbstractDao<TaxiEntity> implements TaxiDao {
-    private static final String INSERT_TAXI = "INSERT INTO tservice.taxis(taxi_location, taxi_number, taxi_type, taxi_driver, taxi_busy) VALUES(?, ?, ?, ?, ? )";
+    private static final String INSERT_TAXI = "INSERT INTO tservice.taxis( taxi_number, taxi_type, taxi_driver, taxi_busy) VALUES(?, ?, ?, ? )";
     private static final String FIND_BY_ID = "SELECT * FROM tservice.taxis WHERE taxi_id = ?";
-    private static final String FIND_ALL_TAXIS = "SELECT * FROM tservice.taxis";
-    private static final String UPDATE_TAXI = "UPDATE tservice.taxis SET taxi_location = ?, taxi_number = ?, taxi_type = ?, taxi_driver = ?, taxi_busy = ? WHERE taxi_id = ?";
+    private static final String FIND_ALL_TAXIS = "SELECT * FROM tservice.taxis LIMIT ?, ?";
+    private static final String COUNT = "SELECT * FROM tservice.taxis";
+    private static final String UPDATE_TAXI = "UPDATE tservice.taxis SET  taxi_number = ?, taxi_type = ?, taxi_driver = ?, taxi_busy = ? WHERE taxi_id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM tservice.taxis WHERE taxi_id = ?";
 
     public TaxiDaoImpl(ConnectionPool connector) {
@@ -36,8 +38,8 @@ public class TaxiDaoImpl extends AbstractDao<TaxiEntity> implements TaxiDao {
     }
 
     @Override
-    public List<TaxiEntity> findAll() {
-        return findAll(FIND_ALL_TAXIS);
+    public List<TaxiEntity> findAll(int currentPage, int recordsPerPage) {
+        return findAll(FIND_ALL_TAXIS, currentPage, recordsPerPage);
     }
 
     @Override
@@ -51,35 +53,36 @@ public class TaxiDaoImpl extends AbstractDao<TaxiEntity> implements TaxiDao {
     }
 
     @Override
+    public int getNumberOfRows() {
+        return getNumberOfRows(COUNT);
+    }
+
+    @Override
     protected void updateStatementMapper(TaxiEntity taxiEntity, PreparedStatement preparedStatement) throws SQLException {
         createStatementMapper(taxiEntity, preparedStatement);
-        preparedStatement.setInt(6, taxiEntity.getId());
+        preparedStatement.setInt(5, taxiEntity.getId());
     }
 
     @Override
     protected void createStatementMapper(TaxiEntity taxiEntity, PreparedStatement preparedStatement) throws SQLException {
-        preparedStatement.setInt(1, taxiEntity.getLocation().getId());
-        preparedStatement.setString(2, taxiEntity.getCarNumber());
-        preparedStatement.setString(3, taxiEntity.getCarType().toString());
-        preparedStatement.setInt(4, taxiEntity.getDriver().getId());
-        preparedStatement.setBoolean(5, taxiEntity.isBusy());
+        preparedStatement.setString(1, taxiEntity.getCarNumber());
+        preparedStatement.setString(2, taxiEntity.getCarType().toString());
+        preparedStatement.setInt(3, taxiEntity.getDriver().getId());
+        preparedStatement.setBoolean(4, taxiEntity.isBusy());
     }
 
     @Override
     protected Optional<TaxiEntity> mapResultSetToEntity(ResultSet taxi) throws SQLException {
-        AddressEntity location = AddressEntity.builder()
-                .withId(taxi.getInt(2))
-                .build();
+
         UserEntity userEntity = UserEntity.builder()
-                .withId(5)
+                .withId(4)
                 .build();
 
         return Optional.of(TaxiEntity.builder().withId(taxi.getInt(1))
-                .withLocation(location)
-                .withCarNumber(taxi.getString(3))
-                .withCarType(CarType.valueOf(taxi.getString(4)))
+                .withCarNumber(taxi.getString(2))
+                .withCarType(CarType.valueOf(taxi.getString(3)))
                 .withDriver(userEntity)
-                .withBusy(taxi.getBoolean(6))
+                .withBusy(taxi.getBoolean(5))
                 .build());
     }
 

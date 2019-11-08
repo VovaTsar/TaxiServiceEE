@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface OrderService {
     boolean createOrder(Order order);
-    List<Order> findAllOrders();
+    List<Order> findAll(int currentPage, int recordsPerPage);
+
+    int getNumberOfRows();
 
 }

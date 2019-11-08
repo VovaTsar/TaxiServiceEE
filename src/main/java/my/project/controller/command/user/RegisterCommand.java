@@ -2,6 +2,7 @@ package my.project.controller.command.user;
 
 import my.project.controller.command.Command;
 import my.project.model.domain.User;
+import my.project.model.entity.Role;
 import my.project.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,19 +17,21 @@ public class RegisterCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        final String name = (String) request.getAttribute("name");
-        final String email = (String) request.getAttribute("email");
+        final String name =  request.getParameter("name");
+        final String surname =  request.getParameter("surname");
+        final String email =  request.getParameter("email");
+        final String password =  request.getParameter("password");
+        final String confirmedPassword =  request.getParameter("confirmPassword");
 
-        final String password = (String) request.getAttribute("password");
-        final String confirmedPassword = (String) request.getAttribute("confirmedPassword");
-
-        if (Objects.equals(password, confirmedPassword)) {
+        if (!Objects.equals(password, confirmedPassword)) {
             return "registration.jsp";
         }
         final User user = User.builder()
-                .withEmail(email)
                 .withName(name)
+                .withSurname(surname)
+                .withEmail(email)
                 .withPassword(password)
+                .withRole(Role.CLIENT)
                 .build();
         userService.register(user);
         return "login.jsp";

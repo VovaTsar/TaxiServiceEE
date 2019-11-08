@@ -9,8 +9,8 @@ public class AddressMapper {
         return AddressEntity.builder()
                 .withStreet(domain.getStreet())
                 .withHouse(domain.getHouse())
-                .withX(domain.getX())
-                .withY(domain.getY())
+                .withCoordinateX(domain.getX())
+                .withCoordinateY(domain.getY())
                 .build();
     }
 
@@ -19,8 +19,8 @@ public class AddressMapper {
                .withId(entity.getId())
                 .withStreet(entity.getStreet())
                 .withHouse(entity.getHouse())
-                .withX(entity.getX())
-                .withY(entity.getY())
+                .withX(entity.getCoordinateX())
+                .withY(entity.getCoordinateY())
                 .build();
     }
 }

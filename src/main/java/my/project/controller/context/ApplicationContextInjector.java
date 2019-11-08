@@ -1,6 +1,7 @@
 package my.project.controller.context;
 
 import my.project.controller.command.Command;
+import my.project.controller.command.show.*;
 import my.project.controller.command.user.LoginCommand;
 import my.project.controller.command.user.LogoutCommand;
 import my.project.controller.command.user.RegisterCommand;
@@ -61,13 +62,25 @@ public final class ApplicationContextInjector {
     private static final Command LOGIN_COMMAND = new LoginCommand(USER_SERVICE);
     private static final Command LOGOUT_COMMAND = new LogoutCommand();
     private static final Command REGISTRATION_COMMAND = new RegisterCommand(USER_SERVICE);
+
+    private static final Command USER_SHOW_COMMAND = new UserShowCommand(USER_SERVICE);
+    private static final Command ORDER_SHOW_COMMAND = new OrderShowCommand(ORDER_SERVICE);
+    private static final Command TAXI_SHOW_COMMAND = new TaxiShowCommand(TAXI_SERVICE);
+    private static final Command COUPON_SHOW_COMMAND = new CouponShowCommand(COUPON_SERVICE);
+    private static final Command ADDRESS_SHOW_COMMAND = new AddressShowCommand(ADDRESS_SERVICE);
+
     private static final Map<String, Command> USER_COMMAND_NAME_TO_COMMAND = getInitUserCommand();
 
     private static Map<String, Command> getInitUserCommand() {
         Map<String, Command> userCommandNameToCommand = new HashMap<>();
         userCommandNameToCommand.put("login", LOGIN_COMMAND);
         userCommandNameToCommand.put("logout", LOGOUT_COMMAND);
-        userCommandNameToCommand.put("registration", REGISTRATION_COMMAND);
+        userCommandNameToCommand.put("register", REGISTRATION_COMMAND);
+        userCommandNameToCommand.put("showUsers", USER_SHOW_COMMAND);
+        userCommandNameToCommand.put("showOrders", ORDER_SHOW_COMMAND);
+        userCommandNameToCommand.put("showTaxis", TAXI_SHOW_COMMAND);
+        userCommandNameToCommand.put("showCoupons", COUPON_SHOW_COMMAND);
+        userCommandNameToCommand.put("showAddresses", ADDRESS_SHOW_COMMAND);
 
         return Collections.unmodifiableMap(userCommandNameToCommand);
     }

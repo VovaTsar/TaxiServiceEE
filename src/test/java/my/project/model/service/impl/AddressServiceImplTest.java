@@ -3,7 +3,7 @@ package my.project.model.service.impl;
 import my.project.model.dao.AddressDao;
 import my.project.model.domain.Address;
 import my.project.model.entity.AddressEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.AddressMapper;
 import org.junit.After;
 import org.junit.Rule;
@@ -59,7 +59,7 @@ public class AddressServiceImplTest {
 
     @Test
     public void shouldThrowInvalidEntityCreationWithNullAddress() {
-        exception.expect(InvalidEntityCreation.class);
+        exception.expect(EntityCreationRuntimeException.class);
         exception.expectMessage("AddressEntity is not valid");
 
         service.createAddress(null);
@@ -67,19 +67,19 @@ public class AddressServiceImplTest {
 
     @Test
     public void shouldShowAllAddresses() {
-        when(addressDao.findAll()).thenReturn(ENTITIES);
+        when(addressDao.findAll(1,2)).thenReturn(ENTITIES);
         when(mapper.mapAddressEntityToAddress(any(AddressEntity.class))).thenReturn(ADDRESS);
 
-        List<Address> actual = service.findAllAddresses();
+        List<Address> actual = service.findAll(1,2);
 
         assertEquals(ADDRESSES, actual);
     }
 
     @Test
     public void shouldReturnEmptyList() {
-        when(addressDao.findAll()).thenReturn(Collections.emptyList());
+        when(addressDao.findAll(1,2)).thenReturn(Collections.emptyList());
 
-        List<Address> actual = service.findAllAddresses();
+        List<Address> actual = service.findAll(1,2);
 
         assertEquals(Collections.emptyList(), actual);
     }

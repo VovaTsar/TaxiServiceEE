@@ -12,7 +12,8 @@ import java.util.Optional;
 public class AddressDaoImpl extends AbstractDao<AddressEntity> implements AddressDao {
     private static final String INSERT_ADDRESS = "INSERT INTO tservice.addresses(address_street, address_house, address_x, address_y) VALUES(?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM tservice.addresses WHERE address_id = ?";
-    private static final String FIND_ALL_ADDRESSES = "SELECT * FROM tservice.addresses";
+    private static final String FIND_ALL_ADDRESSES = "SELECT * FROM tservice.addresses LIMIT ?, ?";
+    private static final String COUNT = "SELECT * FROM tservice.addresses";
     private static final String UPDATE_ADDRESS = "UPDATE tservice.addresses SET address_street = ?, address_house = ?, address_x = ?, address_y = ? WHERE address_id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM tservice.addresses WHERE address_id = ?";
 
@@ -32,10 +33,9 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
     }
 
     @Override
-    public List<AddressEntity> findAll() {
-        return findAll(FIND_ALL_ADDRESSES);
+    public List<AddressEntity> findAll(int currentPage, int recordsPerPage) {
+        return findAll(FIND_ALL_ADDRESSES, currentPage, recordsPerPage);
     }
-
     @Override
     public void update(AddressEntity entity) {
         update(entity, UPDATE_ADDRESS);
@@ -44,6 +44,11 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
     @Override
     public boolean deleteById(Integer id) {
         return deleteById(id, DELETE_BY_ID);
+    }
+
+    @Override
+    public int getNumberOfRows() {
+        return getNumberOfRows(COUNT);
     }
 
     @Override
@@ -56,8 +61,8 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
     protected void createStatementMapper(AddressEntity addressEntity, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, addressEntity.getStreet());
         preparedStatement.setInt(2, addressEntity.getHouse());
-        preparedStatement.setInt(3, addressEntity.getX());
-        preparedStatement.setInt(4, addressEntity.getY());
+        preparedStatement.setInt(3, addressEntity.getCoordinateX());
+        preparedStatement.setInt(4, addressEntity.getCoordinateY());
     }
 
     @Override
@@ -65,8 +70,8 @@ public class AddressDaoImpl extends AbstractDao<AddressEntity> implements Addres
         return Optional.of(AddressEntity.builder().withId(order.getInt(1))
                 .withStreet(order.getString(2))
                 .withHouse(order.getInt(3))
-                .withX(order.getInt(4))
-                .withY(order.getInt(5))
+                .withCoordinateX(order.getInt(4))
+                .withCoordinateY(order.getInt(5))
                 .build());
     }
 }

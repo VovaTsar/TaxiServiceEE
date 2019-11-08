@@ -7,5 +7,7 @@ import java.util.List;
 public interface CouponService {
     boolean createCoupon(Coupon coupon);
 
-    List<Coupon> findAllCoupons();
+    List<Coupon> findAll(int currentPage, int recordsPerPage);
+
+    int getNumberOfRows();
 }

@@ -4,15 +4,15 @@ public class AddressEntity {
     private final Integer id;
     private final String street;
     private final int house;
-    private final int x;
-    private final int y;
+    private final int coordinateX;
+    private final int coordinateY;
 
     private AddressEntity(Builder builder) {
         this.id = builder.id;
         this.street = builder.street;
         this.house = builder.house;
-        this.x = builder.x;
-        this.y = builder.y;
+        this.coordinateX = builder.coordinateX;
+        this.coordinateY = builder.coordinateY;
     }
 
     public static Builder builder() {
@@ -31,20 +31,20 @@ public class AddressEntity {
         return house;
     }
 
-    public int getX() {
-        return x;
+    public int getCoordinateX() {
+        return coordinateX;
     }
 
-    public int getY() {
-        return y;
+    public int getCoordinateY() {
+        return coordinateY;
     }
 
     public static final class Builder {
         private Integer id;
         private String street;
         private int house;
-        private int x;
-        private int y;
+        private int coordinateX;
+        private int coordinateY;
 
         private Builder() {
         }
@@ -64,13 +64,13 @@ public class AddressEntity {
             return this;
         }
 
-        public Builder withX(int x) {
-            this.x = x;
+        public Builder withCoordinateX(int coordinateX) {
+            this.coordinateX = coordinateX;
             return this;
         }
 
-        public Builder withY(int y) {
-            this.y = y;
+        public Builder withCoordinateY(int coordinateY) {
+            this.coordinateY = coordinateY;
             return this;
         }
 

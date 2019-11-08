@@ -3,7 +3,7 @@ package my.project.model.service.impl;
 import my.project.model.dao.CouponDao;
 import my.project.model.domain.Coupon;
 import my.project.model.entity.CouponEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.CouponMapper;
 import org.junit.After;
 import org.junit.Rule;
@@ -60,7 +60,7 @@ public class CouponServiceImplTest {
 
     @Test
     public void shouldThrowInvalidEntityCreationWithNullCoupon() {
-        exception.expect(InvalidEntityCreation.class);
+        exception.expect(EntityCreationRuntimeException.class);
         exception.expectMessage("Coupon is not valid");
 
         service.createCoupon(null);
@@ -68,19 +68,19 @@ public class CouponServiceImplTest {
 
     @Test
     public void shouldShowAllCoupons() {
-        when(couponDao.findAll()).thenReturn(ENTITIES);
+        when(couponDao.findAll(1,2)).thenReturn(ENTITIES);
         when(mapper.mapCouponEntityToCoupon(any(CouponEntity.class))).thenReturn(COUPON);
 
-        List<Coupon> actual = service.findAllCoupons();
+        List<Coupon> actual = service.findAll(1,2);
 
         assertEquals(COUPONS, actual);
     }
 
     @Test
     public void shouldReturnEmptyList() {
-        when(couponDao.findAll()).thenReturn(Collections.emptyList());
+        when(couponDao.findAll(1,2)).thenReturn(Collections.emptyList());
 
-        List<Coupon> actual = service.findAllCoupons();
+        List<Coupon> actual = service.findAll(1,2);
 
         assertEquals(Collections.emptyList(), actual);
     }

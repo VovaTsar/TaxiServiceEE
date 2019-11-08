@@ -3,7 +3,7 @@ package my.project.model.service.impl;
 import my.project.model.dao.TaxiDao;
 import my.project.model.domain.Taxi;
 import my.project.model.entity.TaxiEntity;
-import my.project.model.exception.InvalidEntityCreation;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.mapper.TaxiMapper;
 import org.junit.After;
 import org.junit.Rule;
@@ -58,7 +58,7 @@ public class TaxiServiceImplTest {
 
     @Test
     public void shouldThrowInvalidEntityCreationWithNullTaxi() {
-        exception.expect(InvalidEntityCreation.class);
+        exception.expect(EntityCreationRuntimeException.class);
         exception.expectMessage("TaxiEntity is not valid");
 
         service.createTaxi(null);
@@ -66,19 +66,19 @@ public class TaxiServiceImplTest {
 
     @Test
     public void shouldShowAllTaxis() {
-        when(taxiDao.findAll()).thenReturn(ENTITIES);
+        when(taxiDao.findAll(1,2)).thenReturn(ENTITIES);
         when(mapper.mapTaxiEntityToTaxi(any(TaxiEntity.class))).thenReturn(TAXI);
 
-        List<Taxi> actual = service.findAllTaxis();
+        List<Taxi> actual = service.findAll(1,2);
 
         assertEquals(TAXIS, actual);
     }
 
     @Test
     public void shouldReturnEmptyList() {
-        when(taxiDao.findAll()).thenReturn(Collections.emptyList());
+        when(taxiDao.findAll(1,2)).thenReturn(Collections.emptyList());
 
-        List<Taxi> actual = service.findAllTaxis();
+        List<Taxi> actual = service.findAll(1,2);
 
         assertEquals(Collections.emptyList(), actual);
     }
