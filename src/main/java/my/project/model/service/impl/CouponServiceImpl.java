@@ -1,12 +1,12 @@
 package my.project.model.service.impl;
 
-import my.project.model.exception.EntityCreationRuntimeException;
-import org.apache.log4j.Logger;
+import my.project.model.dao.CouponDao;
 import my.project.model.domain.Coupon;
 import my.project.model.entity.CouponEntity;
-import my.project.model.dao.CouponDao;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.CouponService;
 import my.project.model.service.mapper.CouponMapper;
+import org.apache.log4j.Logger;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +26,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public boolean createCoupon(Coupon coupon) {
-        if (Objects.isNull(coupon) ) {
+        if (Objects.isNull(coupon)) {
             LOGGER.warn("Coupon is not valid");
             throw new EntityCreationRuntimeException("Coupon is not valid");
         }
@@ -36,7 +36,7 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     public List<Coupon> findAll(int currentPage, int recordsPerPage) {
-        List<CouponEntity> result = couponDao.findAll(currentPage,recordsPerPage);
+        List<CouponEntity> result = couponDao.findAll(currentPage, recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapCouponEntityToCoupon)

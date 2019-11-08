@@ -30,10 +30,9 @@ public class CouponShowCommand implements Command {
         if (nOfPages % recordsPerPage > 0) {
             nOfPages++;
         }
-
+        request.setAttribute("recordsPerPage", recordsPerPage);
         request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);
-        request.setAttribute("recordsPerPage", recordsPerPage);
         final String command = request.getParameter("command");
         request.setAttribute("showCoupons", command);
 

@@ -5,6 +5,7 @@ import my.project.model.domain.Taxi;
 import java.util.List;
 
 public interface TaxiService {
+
     boolean createTaxi(Taxi taxi);
 
     List<Taxi> findAll(int currentPage, int recordsPerPage);

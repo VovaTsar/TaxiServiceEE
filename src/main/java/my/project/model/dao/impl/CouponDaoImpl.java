@@ -1,12 +1,11 @@
 package my.project.model.dao.impl;
 
-import my.project.model.domain.Coupon;
-import my.project.model.entity.OrderEntity;
-import my.project.model.entity.CouponEntity;
-import my.project.model.entity.UserEntity;
 import my.project.model.dao.AbstractDao;
-import my.project.model.dao.connector.ConnectionPool;
 import my.project.model.dao.CouponDao;
+import my.project.model.dao.connector.ConnectionPool;
+import my.project.model.entity.CouponEntity;
+import my.project.model.entity.OrderEntity;
+import my.project.model.entity.UserEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,8 +1,8 @@
 package my.project.model.exception;
 
 public class InvalidDatabaseConnectionRuntimeException extends RuntimeException {
-    public InvalidDatabaseConnectionRuntimeException() {
-    }
+
+    public InvalidDatabaseConnectionRuntimeException() { }
 
     public InvalidDatabaseConnectionRuntimeException(String message) {
         super(message);

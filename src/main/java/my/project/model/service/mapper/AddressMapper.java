@@ -16,7 +16,7 @@ public class AddressMapper {
 
     public Address mapAddressEntityToAddress(AddressEntity entity) {
         return Address.builder()
-               .withId(entity.getId())
+                .withId(entity.getId())
                 .withStreet(entity.getStreet())
                 .withHouse(entity.getHouse())
                 .withX(entity.getCoordinateX())

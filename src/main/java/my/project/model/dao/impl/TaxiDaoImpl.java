@@ -1,13 +1,11 @@
 package my.project.model.dao.impl;
 
-import my.project.model.dao.connector.ConnectionPool;
-import my.project.model.domain.Taxi;
-import my.project.model.entity.AddressEntity;
-import my.project.model.entity.TaxiEntity;
-import my.project.model.entity.CarType;
-import my.project.model.entity.UserEntity;
 import my.project.model.dao.AbstractDao;
 import my.project.model.dao.TaxiDao;
+import my.project.model.dao.connector.ConnectionPool;
+import my.project.model.entity.CarType;
+import my.project.model.entity.TaxiEntity;
+import my.project.model.entity.UserEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

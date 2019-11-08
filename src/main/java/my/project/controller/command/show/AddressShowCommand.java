@@ -30,9 +30,8 @@ public class AddressShowCommand implements Command {
         if (nOfPages % recordsPerPage > 0) {
             nOfPages++;
         }
-
-        request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);
+        request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("recordsPerPage", recordsPerPage);
         final String command = request.getParameter("command");
         request.setAttribute("showAddresses", command);

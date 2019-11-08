@@ -5,6 +5,7 @@ import my.project.model.domain.Coupon;
 import java.util.List;
 
 public interface CouponService {
+
     boolean createCoupon(Coupon coupon);
 
     List<Coupon> findAll(int currentPage, int recordsPerPage);

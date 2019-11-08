@@ -65,7 +65,8 @@ public class User {
         private String password;
         private Role role;
 
-        private UserBuilder() {}
+        private UserBuilder() {
+        }
 
         public UserBuilder withId(Integer id) {
             this.id = id;

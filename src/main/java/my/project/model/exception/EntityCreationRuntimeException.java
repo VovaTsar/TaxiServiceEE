@@ -1,8 +1,8 @@
 package my.project.model.exception;
 
 public class EntityCreationRuntimeException extends RuntimeException {
-    public EntityCreationRuntimeException() {
-    }
+
+    public EntityCreationRuntimeException() { }
 
     public EntityCreationRuntimeException(String message) {
         super(message);

@@ -1,9 +1,8 @@
 package my.project.model.service.validator;
 
+import my.project.model.domain.User;
 import my.project.model.exception.RegistrationRuntimeException;
 import org.apache.log4j.Logger;
-import my.project.model.domain.User;
-
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

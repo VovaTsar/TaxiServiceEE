@@ -19,7 +19,7 @@ public final class ConnectionPool {
         resource = ResourceBundle.getBundle(fileConfigName);
     }
 
-    public  Connection getConnection() {
+    public Connection getConnection() {
         if (dataSource == null) {
             synchronized (DataSource.class) {
                 if (dataSource == null) {
@@ -38,8 +38,8 @@ public final class ConnectionPool {
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {
-            LOGGER.error("Could not get connection from database" , e);
-            throw new InvalidDatabaseConnectionRuntimeException("Could not get connection from database " , e);
+            LOGGER.error("Could not get connection from database", e);
+            throw new InvalidDatabaseConnectionRuntimeException("Could not get connection from database ", e);
         }
     }
 }

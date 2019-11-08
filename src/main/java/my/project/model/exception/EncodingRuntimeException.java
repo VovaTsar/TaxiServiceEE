@@ -1,8 +1,8 @@
 package my.project.model.exception;
 
 public class EncodingRuntimeException extends RuntimeException {
-    public EncodingRuntimeException() {
-    }
+
+    public EncodingRuntimeException() { }
 
     public EncodingRuntimeException(String message) {
         super(message);

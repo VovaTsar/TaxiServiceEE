@@ -22,11 +22,8 @@ public class UserShowCommand implements Command {
         List<User> users = userService.findAll(currentPage, recordsPerPage);
 
         request.setAttribute("users", users);
-
         int rows = userService.getNumberOfRows();
-
         int nOfPages = rows / recordsPerPage;
-
         if (nOfPages % recordsPerPage > 0) {
             nOfPages++;
         }

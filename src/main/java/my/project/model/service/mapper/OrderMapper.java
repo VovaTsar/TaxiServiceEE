@@ -31,7 +31,6 @@ public class OrderMapper {
     }
 
 
-
     public Order mapOrderEntityToOrder(OrderEntity entity) {
         return Order.builder()
                 .withId(entity.getId())

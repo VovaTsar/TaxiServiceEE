@@ -1,11 +1,13 @@
 package my.project.model.dao.impl;
 
-import my.project.model.entity.AddressEntity;
 import my.project.model.dao.AbstractDao;
 import my.project.model.dao.AddressDao;
 import my.project.model.dao.connector.ConnectionPool;
+import my.project.model.entity.AddressEntity;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
