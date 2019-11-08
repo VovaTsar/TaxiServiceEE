@@ -1,8 +1,8 @@
 package my.project.model.exception;
 
 public class DatabaseRuntimeException extends RuntimeException {
-    public DatabaseRuntimeException() {
-    }
+
+    public DatabaseRuntimeException() { }
 
     public DatabaseRuntimeException(String message) {
         super(message);

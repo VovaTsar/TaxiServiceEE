@@ -1,8 +1,8 @@
 package my.project.model.exception;
 
 public class UserNotFoundRuntimeException extends RuntimeException {
-    public UserNotFoundRuntimeException() {
-    }
+
+    public UserNotFoundRuntimeException() { }
 
     public UserNotFoundRuntimeException(String s) {
         super(s);

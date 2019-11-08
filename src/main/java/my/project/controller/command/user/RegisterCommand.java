@@ -17,11 +17,11 @@ public class RegisterCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        final String name =  request.getParameter("name");
-        final String surname =  request.getParameter("surname");
-        final String email =  request.getParameter("email");
-        final String password =  request.getParameter("password");
-        final String confirmedPassword =  request.getParameter("confirmPassword");
+        final String name = request.getParameter("name");
+        final String surname = request.getParameter("surname");
+        final String email = request.getParameter("email");
+        final String password = request.getParameter("password");
+        final String confirmedPassword = request.getParameter("confirmPassword");
 
         if (!Objects.equals(password, confirmedPassword)) {
             return "registration.jsp";
@@ -34,6 +34,7 @@ public class RegisterCommand implements Command {
                 .withRole(Role.CLIENT)
                 .build();
         userService.register(user);
+
         return "login.jsp";
     }
 }

@@ -17,11 +17,12 @@ public class LoginCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
 
-         final String email =  request.getParameter("email");
+        final String email = request.getParameter("email");
         final String password = request.getParameter("password");
         User user = userService.login(email, password);
-        HttpSession session= request.getSession();
-        session.setAttribute("user",user);
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+
         return "index.jsp";
     }
 }

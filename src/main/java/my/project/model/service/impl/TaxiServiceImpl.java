@@ -1,12 +1,12 @@
 package my.project.model.service.impl;
 
+import my.project.model.dao.TaxiDao;
 import my.project.model.domain.Taxi;
+import my.project.model.entity.TaxiEntity;
 import my.project.model.exception.EntityCreationRuntimeException;
+import my.project.model.service.TaxiService;
 import my.project.model.service.mapper.TaxiMapper;
 import org.apache.log4j.Logger;
-import my.project.model.entity.TaxiEntity;
-import my.project.model.dao.TaxiDao;
-import my.project.model.service.TaxiService;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +26,7 @@ public class TaxiServiceImpl implements TaxiService {
 
     @Override
     public boolean createTaxi(Taxi taxi) {
-        if (Objects.isNull(taxi) ) {
+        if (Objects.isNull(taxi)) {
             LOGGER.warn("TaxiEntity is not valid");
             throw new EntityCreationRuntimeException("TaxiEntity is not valid");
         }
@@ -36,7 +36,7 @@ public class TaxiServiceImpl implements TaxiService {
 
     @Override
     public List<Taxi> findAll(int currentPage, int recordsPerPage) {
-        List<TaxiEntity> result = taxiDao.findAll(currentPage,recordsPerPage);
+        List<TaxiEntity> result = taxiDao.findAll(currentPage, recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapTaxiEntityToTaxi)

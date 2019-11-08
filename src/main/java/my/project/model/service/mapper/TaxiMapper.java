@@ -1,9 +1,7 @@
 package my.project.model.service.mapper;
 
-import my.project.model.domain.Address;
 import my.project.model.domain.Taxi;
 import my.project.model.domain.User;
-import my.project.model.entity.AddressEntity;
 import my.project.model.entity.TaxiEntity;
 import my.project.model.entity.UserEntity;
 

@@ -1,16 +1,16 @@
 package my.project.model.service.impl;
 
+import my.project.model.dao.UserDao;
 import my.project.model.domain.User;
+import my.project.model.entity.UserEntity;
 import my.project.model.exception.AlreadyRegisteredRuntimeException;
 import my.project.model.exception.EncodingRuntimeException;
 import my.project.model.exception.UserNotFoundRuntimeException;
-import my.project.model.service.validator.Validator;
-import org.apache.log4j.Logger;
-import my.project.model.dao.UserDao;
-import my.project.model.entity.UserEntity;
+import my.project.model.service.UserService;
 import my.project.model.service.encoder.PasswordEncoder;
 import my.project.model.service.mapper.UserMapper;
-import my.project.model.service.UserService;
+import my.project.model.service.validator.Validator;
+import org.apache.log4j.Logger;
 
 import java.util.Collections;
 import java.util.List;
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll(int currentPage, int recordsPerPage) {
-        List<UserEntity> result = userDao.findAll(currentPage,recordsPerPage);
+        List<UserEntity> result = userDao.findAll(currentPage, recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapUserEntityToUser)

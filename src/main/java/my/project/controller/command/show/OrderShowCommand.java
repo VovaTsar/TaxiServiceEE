@@ -30,12 +30,11 @@ public class OrderShowCommand implements Command {
         if (nOfPages % recordsPerPage > 0) {
             nOfPages++;
         }
-
+        final String command = request.getParameter("command");
+        request.setAttribute("showOrders", command);
         request.setAttribute("noOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
-        final String command = request.getParameter("command");
-        request.setAttribute("showOrders", command);
 
         return "listOrders.jsp";
     }

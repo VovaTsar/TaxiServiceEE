@@ -38,7 +38,6 @@ public class UserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         final String command = request.getParameter("command");
-
         final String page = commandNameToCommand.getOrDefault(command, defaultCommand).execute(request);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(page);

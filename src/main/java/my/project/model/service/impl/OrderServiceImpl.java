@@ -1,12 +1,12 @@
 package my.project.model.service.impl;
 
-import my.project.model.entity.OrderEntity;
-import my.project.model.exception.EntityCreationRuntimeException;
-import org.apache.log4j.Logger;
 import my.project.model.dao.OrderDao;
 import my.project.model.domain.Order;
-import my.project.model.service.mapper.OrderMapper;
+import my.project.model.entity.OrderEntity;
+import my.project.model.exception.EntityCreationRuntimeException;
 import my.project.model.service.OrderService;
+import my.project.model.service.mapper.OrderMapper;
+import org.apache.log4j.Logger;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,16 +26,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean createOrder(Order order) {
-        if (Objects.isNull(order) ) {
+        if (Objects.isNull(order)) {
             LOGGER.warn("OrderEntity is not valid");
             throw new EntityCreationRuntimeException("OrderEntity is not valid");
         }
 
         return orderDao.save(mapper.mapOrderToOrderEntity(order));
     }
+
     @Override
     public List<Order> findAll(int currentPage, int recordsPerPage) {
-        List<OrderEntity> result = orderDao.findAll(currentPage,recordsPerPage);
+        List<OrderEntity> result = orderDao.findAll(currentPage, recordsPerPage);
         return result.isEmpty() ? Collections.emptyList()
                 : result.stream()
                 .map(mapper::mapOrderEntityToOrder)

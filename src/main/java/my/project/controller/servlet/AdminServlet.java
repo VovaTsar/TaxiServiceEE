@@ -12,19 +12,19 @@ import java.util.Map;
 import java.util.Optional;
 
 public class AdminServlet extends HttpServlet {
-    private final Map< String, Command> commandNameToCommand;
+    private final Map<String, Command> commandNameToCommand;
 
     public AdminServlet() {
-        final ApplicationContextInjector inject= ApplicationContextInjector.getInstance();
+        final ApplicationContextInjector inject = ApplicationContextInjector.getInstance();
         this.commandNameToCommand = inject.getUserCommands();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String command= req.getParameter("command");
+        final String command = req.getParameter("command");
         //check null maybe use optional
-       //final String page = Optional.ofNullable(commandNameToCommand.get(command));
+        //final String page = Optional.ofNullable(commandNameToCommand.get(command));
 
-      // req.getRequestDispatcher(page).forward(req,resp);
+        // req.getRequestDispatcher(page).forward(req,resp);
     }
 }

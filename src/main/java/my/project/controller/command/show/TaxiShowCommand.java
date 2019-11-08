@@ -21,20 +21,17 @@ public class TaxiShowCommand implements Command {
 
         List<Taxi> taxis = taxiService.findAll(currentPage, recordsPerPage);
 
-        request.setAttribute("taxis", taxis);
-
         int rows = taxiService.getNumberOfRows();
-
         int nOfPages = rows / recordsPerPage;
-
         if (nOfPages % recordsPerPage > 0) {
             nOfPages++;
         }
 
-        request.setAttribute("noOfPages", nOfPages);
+        request.setAttribute("taxis", taxis);
         request.setAttribute("currentPage", currentPage);
-        request.setAttribute("recordsPerPage", recordsPerPage);
+        request.setAttribute("noOfPages", nOfPages);
         final String command = request.getParameter("command");
+        request.setAttribute("recordsPerPage", recordsPerPage);
         request.setAttribute("showTaxis", command);
 
         return "listTaxis.jsp";

@@ -1,13 +1,15 @@
 package my.project.model.dao.impl;
 
-import my.project.model.dao.connector.ConnectionPool;
-import my.project.model.entity.Role;
-import org.apache.log4j.Logger;
-import my.project.model.entity.UserEntity;
 import my.project.model.dao.AbstractDao;
 import my.project.model.dao.UserDao;
+import my.project.model.dao.connector.ConnectionPool;
+import my.project.model.entity.Role;
+import my.project.model.entity.UserEntity;
+import org.apache.log4j.Logger;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
