@@ -14,6 +14,6 @@ public class LogoutCommand implements Command {
         final HttpSession session = request.getSession();
         session.invalidate();
 
-        return "login.jsp";
+        return "/login.jsp";
     }
 }

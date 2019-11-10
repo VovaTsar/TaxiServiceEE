@@ -24,7 +24,7 @@ public class RegisterCommand implements Command {
         final String confirmedPassword = request.getParameter("confirmPassword");
 
         if (!Objects.equals(password, confirmedPassword)) {
-            return "registration.jsp";
+            return "login.jsp";
         }
         final User user = User.builder()
                 .withName(name)

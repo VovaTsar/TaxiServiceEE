@@ -16,7 +16,7 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
             <form action = "user" method="post">
-              <fmt:message key="user.button.logout" var="login" />
+              <fmt:message key="user.button.logout" var="logout" />
               <input type="submit" class="btn btn-primary" name="command" value="logout">
             </form>
           </li>
