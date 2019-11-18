@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.robosh</groupId>
+  <groupId>com.mytaxi</groupId>
   <artifactId>taxiService</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
@@ -98,7 +98,7 @@
       <artifactId>tomcat7-maven-plugin</artifactId>
       <version>2.2</version>
       <configuration>
-        <port>8088</port>
+        <port>8080</port>
         <path>/</path>
         <update>true</update>
       </configuration>
