@@ -1,6 +1,6 @@
 package com.taxi.service.impl;
 
-import com.taxi.model.exception.InputDataUncorrectRuntimeExeption;
+import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.dao.AddressDao;
 import com.taxi.model.entity.Address;
 import com.taxi.service.AddressService;
@@ -27,7 +27,7 @@ public class AddressServiceImpl implements AddressService {
     public Address getAddressByAddressString(String addressString) {
         if (addressString.isEmpty()){
             LOG.error("created AddressServiceImpl getAddressByAddressString");
-            throw  new InputDataUncorrectRuntimeExeption("Address must be not null");
+            throw  new InputDataUnCorrectRuntimeException("Address must be not null");
         }
         int indexWhitespace = addressString.lastIndexOf(" ");
         String street = addressString.substring(0, indexWhitespace);

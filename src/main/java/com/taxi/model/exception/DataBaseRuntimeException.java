@@ -1,8 +1,8 @@
 package com.taxi.model.exception;
 
 public class DataBaseRuntimeException extends RuntimeException {
-    public DataBaseRuntimeException() {
-    }
+
+    public DataBaseRuntimeException() { }
 
     public DataBaseRuntimeException(String message) {
         super(message);
@@ -15,4 +15,5 @@ public class DataBaseRuntimeException extends RuntimeException {
     public DataBaseRuntimeException(String message, Throwable throwable) {
         super(message, throwable);
     }
+
 }

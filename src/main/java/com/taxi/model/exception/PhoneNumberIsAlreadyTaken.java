@@ -1,8 +1,8 @@
 package com.taxi.model.exception;
 
 public class PhoneNumberIsAlreadyTaken extends Exception {
-    public PhoneNumberIsAlreadyTaken() {
-    }
+
+    public PhoneNumberIsAlreadyTaken() { }
 
     public PhoneNumberIsAlreadyTaken(String message) {
         super(message);
@@ -15,4 +15,5 @@ public class PhoneNumberIsAlreadyTaken extends Exception {
     public PhoneNumberIsAlreadyTaken(String message, Throwable throwable) {
         super(message, throwable);
     }
+
 }

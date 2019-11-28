@@ -15,8 +15,8 @@ public class LocalizationFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
-         defaultBundle = filterConfig.getInitParameter("bundle");
-         locale = filterConfig.getInitParameter("locale");
+        defaultBundle = filterConfig.getInitParameter("bundle");
+        locale = filterConfig.getInitParameter("locale");
     }
 
     @Override

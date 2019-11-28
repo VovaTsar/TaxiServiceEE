@@ -1,7 +1,5 @@
 package com.taxi.model.entity;
 
-import java.util.Objects;
-
 public class Address {
     private Integer idAddress;
     private String street;
@@ -31,27 +29,5 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "idAddress='" + idAddress + '\'' +
-                ", street='" + street + '\'' +
-                ", houseNumber='" + houseNumber + '\'' +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address)) return false;
-        Address address = (Address) o;
-        return idAddress == address.idAddress &&
-                Objects.equals(street, address.street) &&
-                Objects.equals(houseNumber, address.houseNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idAddress, street, houseNumber);
-    }
 }

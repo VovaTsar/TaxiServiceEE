@@ -14,7 +14,6 @@ import java.io.IOException;
 import static com.taxi.controller.command.PathCommand.*;
 
 public class AuthenticationFilter implements Filter {
-    private final Logger LOGGER = Logger.getLogger(AuthenticationFilter.class);
 
     @Override
     public void init(FilterConfig fConfig) {
@@ -27,33 +26,28 @@ public class AuthenticationFilter implements Filter {
         String pathInfo = request.getPathInfo();
         String contextAndServletPath = request.getContextPath() + request.getServletPath();
         Person loginedPerson = LoginedUserUtils.getLoginedUser(request.getSession());
-        LOGGER.info("get all info in do Filter");
+
         if ((LOGIN_PAGE.equals(pathInfo) || REGISTER_CLIENT.equals(pathInfo)) && loginedPerson != null) {
             if (loginedPerson.getRole().equals(Role.CLIENT)) {
-                LOGGER.info("role = Client, return client account");
                 response.sendRedirect(contextAndServletPath + CLIENT_ACCOUNT);
             } else {
-                LOGGER.info("role = Driver, return driver account");
                 response.sendRedirect(contextAndServletPath + DRIVER_ACCOUNT);
             }
             return;
         }
-        LOGGER.info("check if page is secure");
+
         if (SecurityUtils.isSecurityPage(request)) {
             if (loginedPerson != null && SecurityUtils.hasPermission(request, loginedPerson.getRole())) {
-                LOGGER.info("person has access to this page");
+
                 chain.doFilter(req, resp);
             } else {
                 if (MAKE_ORDER.equals(pathInfo)) {
-                    LOGGER.info("redirect to login");
                     response.sendRedirect(contextAndServletPath + LOGIN_PAGE);
                 } else {
-                    LOGGER.info("redirect to 403");
                     response.sendRedirect(contextAndServletPath + FORBIDDEN);
                 }
             }
         } else {
-            LOGGER.info("page is not secure, doFilter");
             chain.doFilter(req, resp);
         }
     }

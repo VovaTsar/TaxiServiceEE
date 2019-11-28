@@ -3,13 +3,12 @@ package com.taxi.controller.command.account.client;
 
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
+import com.taxi.model.entity.Client;
 import com.taxi.model.exception.EmailIsAlreadyTaken;
 import com.taxi.model.exception.PhoneNumberIsAlreadyTaken;
-import com.taxi.model.entity.Client;
 import com.taxi.myUtils.EncoderPassword;
 import com.taxi.myUtils.InputDataRegistrationUtils;
 import com.taxi.service.ClientService;
-import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +19,6 @@ import static com.taxi.controller.command.PathCommand.REDIRECT;
 
 public class RegistrationCommand implements Command {
 
-    private final Logger LOGGER = Logger.getLogger(RegistrationCommand.class);
     private ClientService clientService;
     private EncoderPassword encoderPassword;
 
@@ -40,12 +38,10 @@ public class RegistrationCommand implements Command {
         final String repeatPassword = request.getParameter("password_repeat");
 
         if (name == null) {
-            LOGGER.info("Name == null, return register client");
             return RoutesJSP.REGISTER_CLIENT;
         }
         if (InputDataRegistrationUtils.isNotCorrectData(name, surname, phoneNumber,
                 email, password, repeatPassword)) {
-            LOGGER.info("wrong data input");
             return RoutesJSP.REGISTER_CLIENT + "?badInput=true";
         }
 
@@ -57,20 +53,17 @@ public class RegistrationCommand implements Command {
         client.setPassword(encoderPassword.encode(password));
 
         try {
-            LOGGER.info("try write to database client");
             clientService.createClientInDatabase(client);
         } catch (EmailIsAlreadyTaken emailIsAlreadyTaken) {
-            LOGGER.error("EmailIsAlreadyTaken ", emailIsAlreadyTaken);
             emailIsAlreadyTaken.printStackTrace();
             return RoutesJSP.REGISTER_CLIENT + "?badEmail=true";
         } catch (PhoneNumberIsAlreadyTaken phoneNumberIsAlreadyTaken) {
-            LOGGER.error("PhoneNumberIsAlreadyTaken ", phoneNumberIsAlreadyTaken);
             phoneNumberIsAlreadyTaken.printStackTrace();
             return RoutesJSP.REGISTER_CLIENT + "?badPhoneNumber=true";
         }
 
         String contextAndServletPath = request.getContextPath() + request.getServletPath();
-        LOGGER.info("return login page");
+
         return REDIRECT + contextAndServletPath + LOGIN_PAGE;
     }
 }

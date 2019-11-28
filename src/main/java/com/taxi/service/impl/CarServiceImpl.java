@@ -1,6 +1,6 @@
 package com.taxi.service.impl;
 
-import com.taxi.model.exception.InputDataUncorrectRuntimeExeption;
+import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.dao.CarDao;
 import com.taxi.model.entity.Car;
 import com.taxi.service.CarService;
@@ -21,7 +21,7 @@ public class CarServiceImpl implements CarService {
     public Car getCarById(Integer id){
         if (id<0){
             LOG.error("created CarDaoImpl getCarById");
-            throw new InputDataUncorrectRuntimeExeption("Car Id must be positive");
+            throw new InputDataUnCorrectRuntimeException("Car Id must be positive");
         }
             LOG.debug("created CarDaoImplgetCarById");
             return dao.findById(id);
@@ -36,7 +36,7 @@ public class CarServiceImpl implements CarService {
     public boolean findCarByIdAndCarType(Integer idCar, String type){
         if (idCar<0||type.isEmpty()){
             LOG.error("created CarDaoImpl findCarByIdAndCarType");
-            throw new InputDataUncorrectRuntimeExeption("Car Id must be positive and type must be not null");
+            throw new InputDataUnCorrectRuntimeException("Car Id must be positive and type must be not null");
         }
             LOG.debug("created CarDaoImpl findCarByIdAndCarType");
             return dao.isSameCarType(idCar, type);
