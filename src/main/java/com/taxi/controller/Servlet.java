@@ -21,7 +21,7 @@ public class Servlet extends HttpServlet {
     @Override
     public void init() {
         ApplicationContextInjector injector = ApplicationContextInjector.getInstance();
-        commands=injector.getNameCommandToCommands();
+        commands = injector.getNameCommandToCommands();
     }
 
     @Override
@@ -38,8 +38,6 @@ public class Servlet extends HttpServlet {
         processRequest(request, response);
     }
 
-
-
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String commandKey = getRequestPath(request);
@@ -47,15 +45,12 @@ public class Servlet extends HttpServlet {
         Command command = commands.get(commandKey);
         String contextAndServletPath = request.getContextPath() + request.getServletPath();
         if (command == null) {
-            LOGGER.info("command is null redirect home page");
             response.sendRedirect(contextAndServletPath + HOME_PAGE);
         } else {
             String nextPage = command.execute(request, response);
             if (isRedirect(nextPage)) {
-                LOGGER.info("redirect page " + nextPage);
                 response.sendRedirect(nextPage.replaceAll(REDIRECT, EMPTY_STR));
             } else {
-                LOGGER.info("forward page " + nextPage);
                 request.getRequestDispatcher(nextPage).forward(request, response);
             }
         }

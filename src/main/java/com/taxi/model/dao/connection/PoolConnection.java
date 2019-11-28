@@ -34,11 +34,10 @@ public class PoolConnection {
 
 
     public Connection getConnection(){
-        logger.info("Getting connection");
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {
-            logger.error("getConnection error", e);
+            logger.warn("getConnection error", e);
             throw new DataBaseRuntimeException();
         }
     }

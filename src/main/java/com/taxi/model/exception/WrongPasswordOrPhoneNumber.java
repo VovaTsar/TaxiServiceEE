@@ -1,8 +1,8 @@
 package com.taxi.model.exception;
 
 public class WrongPasswordOrPhoneNumber extends Exception {
-    public WrongPasswordOrPhoneNumber() {
-    }
+
+    public WrongPasswordOrPhoneNumber() { }
 
     public WrongPasswordOrPhoneNumber(String message) {
         super(message);
@@ -15,4 +15,5 @@ public class WrongPasswordOrPhoneNumber extends Exception {
     public WrongPasswordOrPhoneNumber(String message, Throwable throwable) {
         super(message, throwable);
     }
+
 }

@@ -1,6 +1,6 @@
 package com.taxi.service.impl;
 
-import com.taxi.model.exception.InputDataUncorrectRuntimeExeption;
+import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.dao.OrderDao;
 import com.taxi.model.entity.*;
 import com.taxi.model.entity.enums.OrderStatus;
@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
     public void createOrderWithCouponInDB(Order order) {
         if (Objects.isNull(order)) {
             LOG.error("creating OrderServiceImpl createOrderWithCouponInDB");
-            throw new InputDataUncorrectRuntimeExeption("Order must be not null");
+            throw new InputDataUnCorrectRuntimeException("Order must be not null");
         }
             LOG.debug("created OrderDaoImpl createOrderWithCouponInDB");
         orderDao.create(order);
@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
     public void createOrderWithoutCouponInDB(Order order) {
         if (Objects.isNull(order)) {
             LOG.error("creating OrderServiceImpl createOrderWithCouponInDB");
-            throw new InputDataUncorrectRuntimeExeption("Order must be not null");
+            throw new InputDataUnCorrectRuntimeException("Order must be not null");
         }
             LOG.debug("created OrderDaoImpl");
         orderDao.createWithoutCoupon(order);
@@ -60,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
     public long getAllOrdersCount(Integer idDriver){
         if (idDriver<0) {
             LOG.error("creating OrderServiceImpl getAllOrdersCount");
-            throw new InputDataUncorrectRuntimeExeption("Id driver must be not null");
+            throw new InputDataUnCorrectRuntimeException("Id driver must be not null");
         }
             return orderDao.findCountOrders(idDriver);
 
@@ -69,7 +69,7 @@ public class OrderServiceImpl implements OrderService {
     public boolean updateOrderStatus(Integer idOrder, OrderStatus orderStatus){
         if (idOrder<0 ||Objects.isNull(orderStatus)) {
             LOG.error("creating OrderServiceImpl updateOrderStatus");
-            throw new InputDataUncorrectRuntimeExeption("Id order and orderStatus must be not null");
+            throw new InputDataUnCorrectRuntimeException("Id order and orderStatus must be not null");
         }
             return orderDao.updateOrderStatus(idOrder, orderStatus);
     }
@@ -77,7 +77,7 @@ public class OrderServiceImpl implements OrderService {
     public boolean isCorrespondOrderAndDriver(Integer idOrder, Integer idDriver) {
         if (idOrder<0 ||idDriver<0) {
             LOG.error("creating OrderServiceImpl isCorrespondOrderAndDriver");
-            throw new InputDataUncorrectRuntimeExeption("Id order and Id driver must be not null");
+            throw new InputDataUnCorrectRuntimeException("Id order and Id driver must be not null");
         }
             return orderDao.isCorrespondOrderAndDriver(idOrder, idDriver);
 

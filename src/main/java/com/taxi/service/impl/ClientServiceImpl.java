@@ -1,7 +1,7 @@
 package com.taxi.service.impl;
 
 import com.taxi.model.exception.EmailIsAlreadyTaken;
-import com.taxi.model.exception.InputDataUncorrectRuntimeExeption;
+import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.exception.PhoneNumberIsAlreadyTaken;
 import com.taxi.model.dao.ClientDao;
 import com.taxi.model.entity.Client;
@@ -28,7 +28,7 @@ public class ClientServiceImpl implements ClientService {
     public void createClientInDatabase(Client client) throws EmailIsAlreadyTaken, PhoneNumberIsAlreadyTaken {
         if (Objects.isNull(client)){
             LOG.error("creating ClientDaoImpl createClientInDatabase");
-            throw  new InputDataUncorrectRuntimeExeption("Client is empty");
+            throw  new InputDataUnCorrectRuntimeException("Client is empty");
         }
         LOG.debug("created ClientDaoImpl");
         boolean isTakenEmail = clientDao.isEmailExists(client.getEmail());
@@ -48,7 +48,7 @@ public class ClientServiceImpl implements ClientService {
     public Client getClientByPasswordAndPhone(String phoneNumber, String password) {
         if (phoneNumber.isEmpty()||password.isEmpty()){
             LOG.error("creating ClientServiceImpl getClientByPasswordAndPhone");
-            throw new InputDataUncorrectRuntimeExeption("Client phoneNumber and password must be not null");
+            throw new InputDataUnCorrectRuntimeException("Client phoneNumber and password must be not null");
         }
         LOG.debug("created ClientDaoImpl");
         return clientDao.findClientByPassPhone(phoneNumber, password).get();

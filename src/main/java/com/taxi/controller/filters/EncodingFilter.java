@@ -1,15 +1,12 @@
 package com.taxi.controller.filters;
 
 
-import org.apache.log4j.Logger;
-
 import javax.servlet.*;
 import java.io.IOException;
 
 
 public class EncodingFilter implements Filter {
 
-    private final Logger LOGGER = Logger.getLogger(EncodingFilter.class);
     private String encodingTypeValue;
 
     @Override
@@ -21,7 +18,6 @@ public class EncodingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
-        LOGGER.info("set encoding " + "encoding_type");
         servletRequest.setCharacterEncoding(encodingTypeValue);
         servletResponse.setCharacterEncoding(encodingTypeValue);
         servletResponse.setContentType("text/html; charset=" + encodingTypeValue);

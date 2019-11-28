@@ -1,6 +1,6 @@
 package com.taxi.service.impl;
 
-import com.taxi.model.exception.InputDataUncorrectRuntimeExeption;
+import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.dao.DriverDao;
 import com.taxi.model.entity.Driver;
 import com.taxi.model.entity.enums.DriverStatus;
@@ -20,7 +20,7 @@ public class DriverServiceImpl implements DriverService {
     public boolean isDriverExists(String phoneNumber, String password) {
         if (phoneNumber.isEmpty() || password.isEmpty()) {
             LOG.error("creating DriverServiceImpl isDriverExists");
-            throw new InputDataUncorrectRuntimeExeption("Driver phoneNumber and password must be not null");
+            throw new InputDataUnCorrectRuntimeException("Driver phoneNumber and password must be not null");
         }
         LOG.debug("created DriverDaoImpl");
         return driverDao.isDriverExist(phoneNumber, password);
@@ -30,7 +30,7 @@ public class DriverServiceImpl implements DriverService {
     public Driver getDriverByPasswordAndPhone(String phoneNumber, String password) {
         if (phoneNumber.isEmpty() || password.isEmpty()) {
             LOG.error("creating DriverServiceImpl getDriverByPasswordAndPhone");
-            throw new InputDataUncorrectRuntimeExeption("Driver phoneNumber and password must be not null");
+            throw new InputDataUnCorrectRuntimeException("Driver phoneNumber and password must be not null");
         }
         LOG.debug("created DriverDaoImpl");
         return driverDao.findDriverByPassAndPhone(phoneNumber, password).get();
@@ -41,7 +41,7 @@ public class DriverServiceImpl implements DriverService {
     public Driver getDriverByPassword(String phoneNumber) {
         if (phoneNumber.isEmpty() ) {
             LOG.error("creating DriverServiceImpl getDriverByPasswordAndPhone");
-            throw new InputDataUncorrectRuntimeExeption("Driver phoneNumber and password must be not null");
+            throw new InputDataUnCorrectRuntimeException("Driver phoneNumber and password must be not null");
         }
         LOG.debug("created DriverDaoImpl");
         return driverDao.findDriverByPass(phoneNumber).get();
@@ -51,7 +51,7 @@ public class DriverServiceImpl implements DriverService {
     public Driver getDriverByCarTypeAndDriverStatus(DriverStatus driverStatus, String carType) {
         if (Objects.isNull(driverStatus) || carType.isEmpty()) {
             LOG.error("creating DriverServiceImpl getDriverByCarTypeAndDriverStatus");
-            throw new InputDataUncorrectRuntimeExeption("Driver driverStatus and password must be not null");
+            throw new InputDataUnCorrectRuntimeException("Driver driverStatus and password must be not null");
         }
         LOG.debug("created DriverDaoImpl");
         return driverDao.findDriverByCarTypeAndDriverStatus(driverStatus, carType);
@@ -61,7 +61,7 @@ public class DriverServiceImpl implements DriverService {
     public boolean updateDriverStatus(Driver driver) {
         if (Objects.isNull(driver)) {
             LOG.error("creating DriverServiceImpl updateDriverStatus");
-            throw new InputDataUncorrectRuntimeExeption("Driver must be not null");
+            throw new InputDataUnCorrectRuntimeException("Driver must be not null");
         }
         LOG.debug("created DriverDaoImpl");
         return driverDao.update(driver);

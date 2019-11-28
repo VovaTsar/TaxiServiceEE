@@ -2,8 +2,6 @@ package com.taxi.model.entity;
 
 import com.taxi.model.entity.enums.Role;
 
-import java.util.Objects;
-
 public abstract class Person {
     protected Integer personId;
     protected String name;
@@ -60,21 +58,5 @@ public abstract class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return getPersonId() == person.getPersonId() &&
-                Objects.equals(getName(), person.getName()) &&
-                Objects.equals(getSurname(), person.getSurname()) &&
-                Objects.equals(getPassword(), person.getPassword()) &&
-                Objects.equals(getPhoneNumber(), person.getPhoneNumber()) &&
-                getRole() == person.getRole();
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getPersonId(), getName(), getSurname(), getPassword(), getPhoneNumber(), getRole());
-    }
 }

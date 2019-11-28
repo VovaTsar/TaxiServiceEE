@@ -1,7 +1,5 @@
 package com.taxi.model.entity;
 
-import java.util.Objects;
-
 public class Car {
     private Integer idCar;
     private String carNumber;
@@ -49,31 +47,5 @@ public class Car {
         this.carType = carType;
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "idCar=" + idCar +
-                ", carNumber='" + carNumber + '\'' +
-                ", brand='" + brand + '\'' +
-                ", color='" + color + '\'' +
-                ", carType='" + carType + '\'' +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Car)) return false;
-        Car car = (Car) o;
-        return idCar == car.idCar &&
-                Objects.equals(carNumber, car.carNumber) &&
-                Objects.equals(brand, car.brand) &&
-                Objects.equals(color, car.color) &&
-                Objects.equals(carType, car.carType);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idCar, carNumber, brand, color, carType);
-    }
 }

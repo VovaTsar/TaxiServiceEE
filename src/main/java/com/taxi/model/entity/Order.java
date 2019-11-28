@@ -100,17 +100,5 @@ public class Order {
         this.costWithDiscount = costWithDiscount;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "idOrder=" + idOrder +
-                ", orderStatus='" + orderStatus + '\'' +
-                ", client=" + client +
-                ", AdressArrive=" + addressArrive +
-                ", AdressDeparture=" + addressDeparture +
-                ", coupon=" + coupon +
-                ", cost=" + cost +
-                ", costWithDiscount=" + costWithDiscount +
-                '}';
-    }
+
 }

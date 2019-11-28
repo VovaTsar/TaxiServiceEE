@@ -12,7 +12,6 @@ import java.util.List;
 
 
 public class ClientOrderCommand implements Command {
-    private final Logger LOGGER = Logger.getLogger(ClientOrderCommand.class);
     private AddressService addressService;
 
     public ClientOrderCommand(AddressService addressService) {
@@ -23,7 +22,6 @@ public class ClientOrderCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         List<Address> allAddress = addressService.getAllAddress();
         request.setAttribute("allAddress", allAddress);
-        LOGGER.info("set attribute all address and return taxi order page");
         return RoutesJSP.TAXI_ORDER;
     }
 }

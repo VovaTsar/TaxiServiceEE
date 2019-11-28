@@ -2,8 +2,8 @@ package com.taxi.model.exception;
 
 
 public class EmailIsAlreadyTaken extends Exception {
-    public EmailIsAlreadyTaken() {
-    }
+
+    public EmailIsAlreadyTaken() { }
 
     public EmailIsAlreadyTaken(String message) {
         super(message);
@@ -16,4 +16,5 @@ public class EmailIsAlreadyTaken extends Exception {
     public EmailIsAlreadyTaken(String message, Throwable throwable) {
         super(message, throwable);
     }
+
 }

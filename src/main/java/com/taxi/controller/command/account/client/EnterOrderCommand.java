@@ -64,6 +64,7 @@ public class EnterOrderCommand implements Command {
 
                 orderService.createOrderInDB(loginedClient, driver, addressDeparture, addressArrive,
                         coupon, costs, costWithDiscount);
+
                 int timeWait = TimeWaitTaxiUtil.getTimeWait();
                 CookiesUtils.addCookies(response, driver, costWithDiscount, timeWait);
 
