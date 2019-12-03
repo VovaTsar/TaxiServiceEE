@@ -29,11 +29,13 @@ public class EnterLoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
+
         final String phoneNumber = request.getParameter("phoneNumber");
         final String password = request.getParameter("password");
-        String contextAndServletPath = request.getContextPath() + request.getServletPath();
 
+        String contextAndServletPath = request.getContextPath() + request.getServletPath();
         String hashPassword = encoderPassword.encode(password);
+
         if (inputWrongData(phoneNumber, hashPassword)) {
             request.setAttribute("errorMessage", "Invalid Phone Number or Password");
             return RoutesJSP.LOGIN + "?wrongData=true";

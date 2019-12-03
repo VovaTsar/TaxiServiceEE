@@ -23,12 +23,14 @@ public class ShowAllDriverOrdersCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
+
         int idDriver = LoginedUserUtils.getLoginedUser(session).getPersonId();
         int pageNumber;
         int totalNumberRecords = (int) orderService.getAllOrdersCount(idDriver);
         int recordPerPage = 5;
         int startIndex;
         int numberOfPages;
+
         String sPageNo = request.getParameter("pagination");
 
         pageNumber = getPageNumber(sPageNo);
@@ -50,8 +52,7 @@ public class ShowAllDriverOrdersCommand implements Command {
         try {
             return Integer.valueOf(strNumber);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            return 1;
         }
-        return 1;
     }
 }

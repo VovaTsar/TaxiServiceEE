@@ -41,6 +41,7 @@ public class EnterOrderCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         final String addressDepartureStr = request.getParameter("addressDeparture");
         final String addressArriveStr = request.getParameter("addressArrive");
         final String carType = request.getParameter("carType");
