@@ -1,4 +1,4 @@
-package com.taxi.myUtils;
+package com.taxi.model.myUtils;
 
 import com.taxi.model.exception.EncodePasswordRuntimeException;
 import org.apache.log4j.Logger;
@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class EncoderPassword {
+
     private static final Logger LOGGER = Logger.getLogger(EncoderPassword.class);
 
     public String encode(String oldPassword) {

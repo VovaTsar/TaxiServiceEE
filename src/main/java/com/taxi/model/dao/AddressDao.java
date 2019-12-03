@@ -1,11 +1,11 @@
 package com.taxi.model.dao;
 
-import com.taxi.model.entity.Address;
+import com.taxi.model.domain.AddressEntity;
 
 import java.util.Optional;
 
-public interface AddressDao extends Dao<Integer,Address> {
+public interface AddressDao extends Dao<Integer, AddressEntity> {
 
-    Optional<Address> findAddressByStreetNumberHouse(String street, String numberHouse);
+    Optional<AddressEntity> findAddressByStreetNumberHouse(String street, String numberHouse);
 
 }

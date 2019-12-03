@@ -6,9 +6,9 @@ import com.taxi.controller.command.RoutesJSP;
 import com.taxi.model.entity.Client;
 import com.taxi.model.exception.EmailIsAlreadyTaken;
 import com.taxi.model.exception.PhoneNumberIsAlreadyTaken;
-import com.taxi.myUtils.EncoderPassword;
-import com.taxi.myUtils.InputDataRegistrationUtils;
-import com.taxi.service.ClientService;
+import com.taxi.model.myUtils.EncoderPassword;
+import com.taxi.model.myUtils.InputDataRegistrationUtils;
+import com.taxi.model.service.ClientService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

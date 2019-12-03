@@ -1,15 +1,15 @@
 package com.taxi.model.dao;
 
-import com.taxi.model.entity.Order;
+import com.taxi.model.domain.OrderEntity;
 import com.taxi.model.entity.enums.OrderStatus;
 
 import java.util.List;
 
-public interface OrderDao extends Dao<Integer, Order> {
+public interface OrderDao extends Dao<Integer, OrderEntity> {
 
-    List<Order> findAllOrdersByDriverId(Integer idDriver, int row, int limit);
+    List<OrderEntity> findAllOrdersByDriverId(Integer idDriver, int row, int limit);
 
-    void createWithoutCoupon(Order order);
+    void createWithoutCoupon(OrderEntity order);
 
     long findCountOrders(Integer idDriver);
 

@@ -1,4 +1,4 @@
-package com.taxi.myUtils;
+package com.taxi.model.myUtils;
 
 import com.taxi.model.entity.enums.Role;
 
@@ -8,6 +8,7 @@ import java.util.Set;
 
 
 public class SecurityUtils {
+
     public static boolean isSecurityPage(HttpServletRequest request) {
         Set<Role> roles = SecurityConfig.getAllAppRoles();
         for (Role role : roles) {

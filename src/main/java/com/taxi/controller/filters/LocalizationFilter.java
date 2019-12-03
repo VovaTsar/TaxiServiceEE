@@ -1,6 +1,5 @@
 package com.taxi.controller.filters;
 
-
 import org.apache.log4j.Logger;
 
 import javax.servlet.*;
@@ -9,6 +8,7 @@ import java.io.IOException;
 
 
 public class LocalizationFilter implements Filter {
+
     private final Logger LOGGER = Logger.getLogger(LocalizationFilter.class);
     private String defaultBundle;
     private String locale;

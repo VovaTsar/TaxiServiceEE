@@ -2,9 +2,8 @@ package com.taxi.controller.filters;
 
 import com.taxi.model.entity.Person;
 import com.taxi.model.entity.enums.Role;
-import com.taxi.myUtils.LoginedUserUtils;
-import com.taxi.myUtils.SecurityUtils;
-import org.apache.log4j.Logger;
+import com.taxi.model.myUtils.LoginedUserUtils;
+import com.taxi.model.myUtils.SecurityUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

@@ -2,9 +2,9 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.*;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.entity.Coupon;
-import com.taxi.model.entity.Driver;
-import com.taxi.model.entity.Order;
+import com.taxi.model.domain.CouponEntity;
+import com.taxi.model.domain.DriverEntity;
+import com.taxi.model.domain.OrderEntity;
 import com.taxi.model.entity.enums.OrderStatus;
 import org.apache.log4j.Logger;
 
@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao {
+public class OrderDaoImpl extends AbstractGenericDao<OrderEntity> implements OrderDao {
+
     private static final String READ_BY_ID = "SELECT * FROM  taxi_database.order WHERE  id_order  =(?);";
 
     private static final String READ_BY_ID_DRIVER = "SELECT * FROM  taxi_database.order WHERE  id_driver  =(?);";
@@ -52,7 +53,7 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
     }
 
     @Override
-    public void create(Order order) {
+    public void create(OrderEntity order) {
         try (PreparedStatement statement = connector.getConnection().prepareStatement(INSERT)) {
             LOG.debug("Executed query" + INSERT);
             setInsertElementProperties(statement, order);
@@ -67,7 +68,7 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
 
 
     @Override
-    public void createWithoutCoupon(Order order) {
+    public void createWithoutCoupon(OrderEntity order) {
         try (PreparedStatement statement = connector.getConnection().prepareStatement(INSERT_WITHOUT_COUPON)) {
             LOG.debug("Executed query" + INSERT_WITHOUT_COUPON);
             setInsertElementProperties(statement, order);
@@ -101,14 +102,14 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
 
 
     @Override
-    public Order findById(Integer id) {
+    public OrderEntity findById(Integer id) {
         return super.getElementByIntegerParam(id, READ_BY_ID);
     }
 
 
     @Override
-    public List<Order> findAllOrdersByDriverId(Integer idDriver, int row, int limit) {
-        List<Order> orders = new ArrayList<>();
+    public List<OrderEntity> findAllOrdersByDriverId(Integer idDriver, int row, int limit) {
+        List<OrderEntity> orders = new ArrayList<>();
         try (PreparedStatement ps = connector.getConnection().prepareStatement(READ_BY_ID_DRIVER_WITH_LIMIT)) {
             ps.setInt(1, idDriver);
             ps.setInt(2, row);
@@ -121,11 +122,11 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
         }
     }
 
-    private List<Order> getOrders(List<Order> orders, ResultSet rs) throws SQLException {
+    private List<OrderEntity> getOrders(List<OrderEntity> orders, ResultSet rs) throws SQLException {
         LOG.debug("Executed query" + READ_BY_ID_DRIVER);
         while (rs.next()) {
             LOG.debug("check is rs has next");
-            Order order = parseToOneElement(rs);
+            OrderEntity order = parseToOneElement(rs);
             orders.add(order);
         }
         return orders;
@@ -133,7 +134,7 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
 
 
     @Override
-    public List<Order> findAll() {
+    public List<OrderEntity> findAll() {
         return super.getList(READ_ALL);
     }
 
@@ -173,7 +174,7 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
 
 
     @Override
-    public boolean update(Order order) {
+    public boolean update(OrderEntity order) {
         throw new UnsupportedOperationException();
     }
 
@@ -185,7 +186,7 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
 
 
     @Override
-    protected void setInsertElementProperties(PreparedStatement statement, Order element) throws SQLException {
+    protected void setInsertElementProperties(PreparedStatement statement, OrderEntity element) throws SQLException {
         statement.setString(1, element.getOrderStatus().toString());
         statement.setInt(2, element.getClient().getPersonId());
         statement.setInt(3, element.getDriver().getPersonId());
@@ -194,27 +195,25 @@ public class OrderDaoImpl extends AbstractGenericDao<Order> implements OrderDao 
     }
 
     @Override
-    protected void setUpdateElementProperties(PreparedStatement statement, Order element) {
+    protected void setUpdateElementProperties(PreparedStatement statement, OrderEntity element) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected Order parseToOneElement(ResultSet resultSet) throws SQLException {
-        Order order = new Order();
+    protected OrderEntity parseToOneElement(ResultSet resultSet) throws SQLException {
+        OrderEntity order = new OrderEntity();
         order.setIdOrder(resultSet.getInt("id_order"));
         order.setOrderStatus(OrderStatus.valueOf(resultSet.getString("order_status")));
         order.setClient(clientDao.findById(resultSet.getInt("id_client")));
 
-        Driver driver = driverDao.findById(resultSet.getInt("id_driver"));
+        DriverEntity driver = driverDao.findById(resultSet.getInt("id_driver"));
         order.setDriver(driver);
 
         order.setAddressDeparture(addressDao.findById(resultSet.getInt("id_adress_departure")));
         order.setAddressArrive(addressDao.findById(resultSet.getInt("id_adress_arrive")));
 
-        Coupon coupon = couponDao.findById(resultSet.getInt("id_coupon"));
-
+        CouponEntity coupon = couponDao.findById(resultSet.getInt("id_coupon"));
         order.setCoupon(coupon);
-
 
         order.setCost(resultSet.getInt("cost"));
         order.setCostWithDiscount(resultSet.getInt("cost_with_discount"));

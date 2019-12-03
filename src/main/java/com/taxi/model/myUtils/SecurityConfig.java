@@ -1,9 +1,10 @@
-package com.taxi.myUtils;
+package com.taxi.model.myUtils;
 
 import com.taxi.model.entity.enums.Role;
-import static com.taxi.controller.command.PathCommand.*;
+
 import java.util.*;
 
+import static com.taxi.controller.command.PathCommand.*;
 
 
 public class SecurityConfig {

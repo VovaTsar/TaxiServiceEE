@@ -10,30 +10,30 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PoolConnection {
-    private static final Logger logger = Logger.getLogger(PoolConnection.class);
 
+    private static final Logger logger = Logger.getLogger(PoolConnection.class);
     private DataSource dataSource;
 
     public PoolConnection() {
-            try {
-                ResourceBundle dbConfig = ResourceBundle.getBundle("db");
-                BasicDataSource basicDataSource = new BasicDataSource();
-                basicDataSource.setUrl(dbConfig.getString("db.connection.url"));
-                basicDataSource.setDriverClassName(dbConfig.getString("db.connection.driver"));
-                basicDataSource.setUsername(dbConfig.getString("db.connection.username"));
-                basicDataSource.setPassword(dbConfig.getString("db.connection.password"));
-                basicDataSource.setMinIdle(Integer.parseInt(dbConfig.getString("db.connection.minIdle")));
-                basicDataSource.setMaxIdle(Integer.parseInt(dbConfig.getString("db.connection.maxIdle")));
-                basicDataSource.setMaxActive(Integer.parseInt(dbConfig.getString("db.connection.maxActive")));
-                basicDataSource.setMaxOpenPreparedStatements(Integer.parseInt(dbConfig.getString("db.connection.maxOpenPreparedStatements")));
-                dataSource = basicDataSource;
-            } catch (Exception e) {
-                logger.warn("Error connection", e);
-            }
+        try {
+            ResourceBundle dbConfig = ResourceBundle.getBundle("db");
+            BasicDataSource basicDataSource = new BasicDataSource();
+            basicDataSource.setUrl(dbConfig.getString("db.connection.url"));
+            basicDataSource.setDriverClassName(dbConfig.getString("db.connection.driver"));
+            basicDataSource.setUsername(dbConfig.getString("db.connection.username"));
+            basicDataSource.setPassword(dbConfig.getString("db.connection.password"));
+            basicDataSource.setMinIdle(Integer.parseInt(dbConfig.getString("db.connection.minIdle")));
+            basicDataSource.setMaxIdle(Integer.parseInt(dbConfig.getString("db.connection.maxIdle")));
+            basicDataSource.setMaxActive(Integer.parseInt(dbConfig.getString("db.connection.maxActive")));
+            basicDataSource.setMaxOpenPreparedStatements(Integer.parseInt(dbConfig.getString("db.connection.maxOpenPreparedStatements")));
+            dataSource = basicDataSource;
+        } catch (Exception e) {
+            logger.warn("Error connection", e);
         }
+    }
 
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {

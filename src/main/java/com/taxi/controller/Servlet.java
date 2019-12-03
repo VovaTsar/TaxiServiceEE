@@ -15,6 +15,7 @@ import static com.taxi.controller.command.PathCommand.*;
 
 
 public class Servlet extends HttpServlet {
+
     private final Logger LOGGER = Logger.getLogger(Servlet.class);
     private Map<String, Command> commands;
 

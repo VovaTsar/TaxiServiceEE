@@ -4,10 +4,10 @@ import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
 import com.taxi.model.entity.Person;
 import com.taxi.model.entity.enums.Role;
-import com.taxi.myUtils.EncoderPassword;
-import com.taxi.myUtils.LoginedUserUtils;
-import com.taxi.service.ClientService;
-import com.taxi.service.DriverService;
+import com.taxi.model.myUtils.EncoderPassword;
+import com.taxi.model.myUtils.LoginedUserUtils;
+import com.taxi.model.service.ClientService;
+import com.taxi.model.service.DriverService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

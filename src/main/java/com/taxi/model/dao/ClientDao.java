@@ -1,10 +1,10 @@
 package com.taxi.model.dao;
 
-import com.taxi.model.entity.Client;
+import com.taxi.model.domain.ClientEntity;
 
 import java.util.Optional;
 
-public interface ClientDao extends Dao<Integer,Client> {
+public interface ClientDao extends Dao<Integer, ClientEntity> {
 
     boolean isClientExists(String phoneNumber, String password);
 
@@ -12,6 +12,6 @@ public interface ClientDao extends Dao<Integer,Client> {
 
     boolean isEmailExists(String email);
 
-    Optional<Client> findClientByPassPhone(String phoneNumber, String password);
+    Optional<ClientEntity> findClientByPassPhone(String phoneNumber, String password);
 
 }

@@ -1,9 +1,9 @@
 package com.taxi.model.dao;
 
-import com.taxi.model.entity.Coupon;
+import com.taxi.model.domain.CouponEntity;
 
-public interface CouponDao extends Dao<Integer, Coupon> {
+public interface CouponDao extends Dao<Integer, CouponEntity> {
 
-    Coupon findByCouponName(String couponName);
+    CouponEntity findByCouponName(String couponName);
 
 }

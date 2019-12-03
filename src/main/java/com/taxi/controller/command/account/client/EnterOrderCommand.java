@@ -2,19 +2,17 @@ package com.taxi.controller.command.account.client;
 
 
 import com.taxi.controller.command.Command;
-import com.taxi.model.entity.Address;
-import com.taxi.model.entity.Client;
-import com.taxi.model.entity.Coupon;
-import com.taxi.model.entity.Driver;
+import com.taxi.model.entity.*;
 import com.taxi.model.entity.enums.DriverStatus;
-import com.taxi.myUtils.CookiesUtils;
-import com.taxi.myUtils.LoginedUserUtils;
-import com.taxi.myUtils.PriceVoyageUtils;
-import com.taxi.myUtils.TimeWaitTaxiUtil;
-import com.taxi.service.AddressService;
-import com.taxi.service.CouponService;
-import com.taxi.service.DriverService;
-import com.taxi.service.OrderService;
+import com.taxi.model.entity.enums.OrderStatus;
+import com.taxi.model.myUtils.CookiesUtils;
+import com.taxi.model.myUtils.LoginedUserUtils;
+import com.taxi.model.myUtils.PriceVoyageUtils;
+import com.taxi.model.myUtils.TimeWaitTaxiUtil;
+import com.taxi.model.service.AddressService;
+import com.taxi.model.service.CouponService;
+import com.taxi.model.service.DriverService;
+import com.taxi.model.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +40,7 @@ public class EnterOrderCommand implements Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String addressDepartureStr = request.getParameter("addressDeparture");
         final String addressArriveStr = request.getParameter("addressArrive");
         final String carType = request.getParameter("carType");
@@ -62,8 +60,10 @@ public class EnterOrderCommand implements Command {
                 int costs = PriceVoyageUtils.getPriceDependDistance(addressArrive, addressDeparture);
                 int costWithDiscount = PriceVoyageUtils.getPriceWithCoupon(costs, coupon);
 
-                orderService.createOrderInDB(loginedClient, driver, addressDeparture, addressArrive,
-                        coupon, costs, costWithDiscount);
+                Order order = new Order(OrderStatus.EXECUTING, loginedClient, driver, addressDeparture,
+                        addressArrive, coupon, costs, costWithDiscount);
+
+                orderService.createOrderInDB(order);
 
                 int timeWait = TimeWaitTaxiUtil.getTimeWait();
                 CookiesUtils.addCookies(response, driver, costWithDiscount, timeWait);

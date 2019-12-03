@@ -1,4 +1,4 @@
-package com.taxi.myUtils;
+package com.taxi.model.myUtils;
 
 import com.taxi.model.entity.Driver;
 
