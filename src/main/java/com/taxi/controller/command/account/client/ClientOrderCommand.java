@@ -1,10 +1,9 @@
 package com.taxi.controller.command.account.client;
 
-import com.taxi.model.entity.Address;
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
-import com.taxi.service.AddressService;
-import org.apache.log4j.Logger;
+import com.taxi.model.entity.Address;
+import com.taxi.model.service.AddressService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

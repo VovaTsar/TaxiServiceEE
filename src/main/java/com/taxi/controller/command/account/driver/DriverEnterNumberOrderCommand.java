@@ -1,14 +1,13 @@
 package com.taxi.controller.command.account.driver;
 
-
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
 import com.taxi.model.entity.Driver;
 import com.taxi.model.entity.enums.DriverStatus;
 import com.taxi.model.entity.enums.OrderStatus;
-import com.taxi.myUtils.LoginedUserUtils;
-import com.taxi.service.DriverService;
-import com.taxi.service.OrderService;
+import com.taxi.model.myUtils.LoginedUserUtils;
+import com.taxi.model.service.DriverService;
+import com.taxi.model.service.OrderService;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;

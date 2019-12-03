@@ -2,8 +2,7 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.CarDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.entity.Car;
-import org.apache.log4j.Logger;
+import com.taxi.model.domain.CarEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,14 +10,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-public class CarDaoImpl extends AbstractGenericDao<Car> implements CarDao {
-    private static final String READ_BY_ID = "SELECT * FROM  taxi_database.car WHERE  id_car =(?);";
+public class CarDaoImpl extends AbstractGenericDao<CarEntity> implements CarDao {
 
-    private static final String READ_BY_ID_AND_CAR_TYPE = "SELECT * FROM  taxi_database.car WHERE  id_car =(?) AND car_type =(?);";
+    private static final String READ_BY_ID = "SELECT * FROM  taxi_database.car WHERE  id_car =(?);";
 
     private static final String READ_ALL = "SELECT * FROM  taxi_database.car ;";
 
-    private static final Logger LOG = Logger.getLogger(CarDaoImpl.class);
 
     public CarDaoImpl(PoolConnection connection) {
         super(connection);
@@ -26,29 +23,23 @@ public class CarDaoImpl extends AbstractGenericDao<Car> implements CarDao {
 
 
     @Override
-    public Car findById(Integer id) {
+    public CarEntity findById(Integer id) {
         return getElementByIntegerParam(id, READ_BY_ID);
     }
 
 
     @Override
-    public List<Car> findAll() {
+    public List<CarEntity> findAll() {
         return getList(READ_ALL);
     }
 
-
     @Override
-    public boolean isSameCarType(Integer idCar, String carType) {
-      return isExistWithIntegerAndStringParametr(idCar,carType,READ_BY_ID_AND_CAR_TYPE);
-    }
-
-    @Override
-    public void create(Car entity) {
+    public void create(CarEntity entity) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean update(Car car) {
+    public boolean update(CarEntity car) {
         throw new UnsupportedOperationException();
     }
 
@@ -59,18 +50,18 @@ public class CarDaoImpl extends AbstractGenericDao<Car> implements CarDao {
 
 
     @Override
-    protected void setInsertElementProperties(PreparedStatement statement, Car element)  {
+    protected void setInsertElementProperties(PreparedStatement statement, CarEntity element) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void setUpdateElementProperties(PreparedStatement statement, Car element)  {
+    protected void setUpdateElementProperties(PreparedStatement statement, CarEntity element) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected Car parseToOneElement(ResultSet resultSet) throws SQLException {
-        Car car = new Car();
+    protected CarEntity parseToOneElement(ResultSet resultSet) throws SQLException {
+        CarEntity car = new CarEntity();
         car.setIdCar(resultSet.getInt("id_car"));
         car.setCarNumber(resultSet.getString("number"));
         car.setBrand(resultSet.getString("brand"));

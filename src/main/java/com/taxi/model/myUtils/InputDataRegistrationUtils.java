@@ -1,4 +1,4 @@
-package com.taxi.myUtils;
+package com.taxi.model.myUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

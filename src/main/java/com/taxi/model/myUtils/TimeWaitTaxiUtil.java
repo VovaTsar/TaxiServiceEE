@@ -1,8 +1,9 @@
-package com.taxi.myUtils;
+package com.taxi.model.myUtils;
 
 
 
 public class TimeWaitTaxiUtil {
+
     private TimeWaitTaxiUtil() {
     }
 

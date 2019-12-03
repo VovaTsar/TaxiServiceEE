@@ -1,9 +1,9 @@
 package com.taxi.controller.command.account.client;
 
 
-import com.taxi.myUtils.CookiesUtils;
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
+import com.taxi.model.myUtils.CookiesUtils;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,70 +1,68 @@
-package com.taxi.service.impl;
+package com.taxi.model.service.impl;
 
-import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.dao.DriverDao;
+import com.taxi.model.domain.DriverEntity;
 import com.taxi.model.entity.Driver;
 import com.taxi.model.entity.enums.DriverStatus;
-import com.taxi.service.DriverService;
+import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
+import com.taxi.model.exception.InvalidDataRuntimeException;
+import com.taxi.model.mapper.DriverMapper;
+import com.taxi.model.service.DriverService;
 import org.apache.log4j.Logger;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class DriverServiceImpl implements DriverService {
+
     private static final Logger LOG = Logger.getLogger(DriverServiceImpl.class);
     private DriverDao driverDao;
+    private DriverMapper driverMapper;
 
-    public DriverServiceImpl(DriverDao driverDao) {
+    public DriverServiceImpl(DriverDao driverDao, DriverMapper driverMapper) {
         this.driverDao = driverDao;
+        this.driverMapper = driverMapper;
     }
 
     public boolean isDriverExists(String phoneNumber, String password) {
         if (phoneNumber.isEmpty() || password.isEmpty()) {
-            LOG.error("creating DriverServiceImpl isDriverExists");
+            LOG.warn("creating DriverServiceImpl isDriverExists");
             throw new InputDataUnCorrectRuntimeException("Driver phoneNumber and password must be not null");
         }
-        LOG.debug("created DriverDaoImpl");
+
         return driverDao.isDriverExist(phoneNumber, password);
 
     }
 
     public Driver getDriverByPasswordAndPhone(String phoneNumber, String password) {
         if (phoneNumber.isEmpty() || password.isEmpty()) {
-            LOG.error("creating DriverServiceImpl getDriverByPasswordAndPhone");
+            LOG.warn("creating DriverServiceImpl getDriverByPasswordAndPhone");
             throw new InputDataUnCorrectRuntimeException("Driver phoneNumber and password must be not null");
         }
-        LOG.debug("created DriverDaoImpl");
-        return driverDao.findDriverByPassAndPhone(phoneNumber, password).get();
+        Optional<DriverEntity> driverEntity = driverDao.findDriverByPassAndPhone(phoneNumber, password);
+
+        return driverEntity.map(driverMapper::driverEntityToDriver)
+                .orElseThrow(() -> new InvalidDataRuntimeException("Driver  is not correct"));
 
     }
-
-    @Override
-    public Driver getDriverByPassword(String phoneNumber) {
-        if (phoneNumber.isEmpty() ) {
-            LOG.error("creating DriverServiceImpl getDriverByPasswordAndPhone");
-            throw new InputDataUnCorrectRuntimeException("Driver phoneNumber and password must be not null");
-        }
-        LOG.debug("created DriverDaoImpl");
-        return driverDao.findDriverByPass(phoneNumber).get();
-    }
-
 
     public Driver getDriverByCarTypeAndDriverStatus(DriverStatus driverStatus, String carType) {
         if (Objects.isNull(driverStatus) || carType.isEmpty()) {
-            LOG.error("creating DriverServiceImpl getDriverByCarTypeAndDriverStatus");
+            LOG.warn("creating DriverServiceImpl getDriverByCarTypeAndDriverStatus");
             throw new InputDataUnCorrectRuntimeException("Driver driverStatus and password must be not null");
         }
-        LOG.debug("created DriverDaoImpl");
-        return driverDao.findDriverByCarTypeAndDriverStatus(driverStatus, carType);
-    }
 
+        return driverMapper.driverEntityToDriver(driverDao.findDriverByCarTypeAndDriverStatus(driverStatus, carType));
+
+    }
 
     public boolean updateDriverStatus(Driver driver) {
         if (Objects.isNull(driver)) {
-            LOG.error("creating DriverServiceImpl updateDriverStatus");
+            LOG.warn("creating DriverServiceImpl updateDriverStatus");
             throw new InputDataUnCorrectRuntimeException("Driver must be not null");
         }
-        LOG.debug("created DriverDaoImpl");
-        return driverDao.update(driver);
+
+        return driverDao.update(driverMapper.driverToDriverEntity(driver));
 
     }
 }

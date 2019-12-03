@@ -2,7 +2,7 @@ package com.taxi.model.dao;
 
 import java.util.List;
 
-public interface Dao<ID,T>  {
+public interface Dao<ID, T> {
 
     void create(T entity);
 

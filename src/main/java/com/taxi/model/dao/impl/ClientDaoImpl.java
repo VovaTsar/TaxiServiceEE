@@ -2,9 +2,8 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.ClientDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.entity.Client;
+import com.taxi.model.domain.ClientEntity;
 import com.taxi.model.entity.enums.Role;
-import org.apache.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class ClientDaoImpl extends AbstractGenericDao<Client> implements ClientDao {
+public class ClientDaoImpl extends AbstractGenericDao<ClientEntity> implements ClientDao {
+
     private static final String READ_BY_ID = "SELECT * FROM  taxi_database.client WHERE  id_client =(?);";
 
     private static final String READ_ALL = "SELECT * FROM  taxi_database.client ;";
@@ -25,8 +25,6 @@ public class ClientDaoImpl extends AbstractGenericDao<Client> implements ClientD
     private static final String READ_BY_PHONE_NUMBER = "SELECT * FROM  taxi_database.client WHERE  phone_number =(?);";
 
     private static final String READ_BY_PHONE_PASSWORD = "SELECT * FROM  taxi_database.client WHERE  phone_number  =(?) AND password =(?);";
-
-    private static final Logger LOG = Logger.getLogger(ClientDaoImpl.class);
 
 
     public ClientDaoImpl(PoolConnection connection) {
@@ -53,30 +51,30 @@ public class ClientDaoImpl extends AbstractGenericDao<Client> implements ClientD
 
 
     @Override
-    public Optional<Client> findClientByPassPhone(String phoneNumber, String password) {
+    public Optional<ClientEntity> findClientByPassPhone(String phoneNumber, String password) {
         return Optional.ofNullable(getElementByTwoStringParam(phoneNumber, password, READ_BY_PHONE_PASSWORD));
     }
 
     @Override
-    public void create(Client client) {
+    public void create(ClientEntity client) {
         insert(client, INSERT);
     }
 
 
     @Override
-    public Client findById(Integer id) {
+    public ClientEntity findById(Integer id) {
         return getElementByIntegerParam(id, READ_BY_ID);
     }
 
 
     @Override
-    public List<Client> findAll() {
+    public List<ClientEntity> findAll() {
         return getList(READ_ALL);
     }
 
 
     @Override
-    public boolean update(Client client) {
+    public boolean update(ClientEntity client) {
         throw new UnsupportedOperationException();
     }
 
@@ -88,7 +86,7 @@ public class ClientDaoImpl extends AbstractGenericDao<Client> implements ClientD
 
 
     @Override
-    protected void setInsertElementProperties(PreparedStatement statement, Client element) throws SQLException {
+    protected void setInsertElementProperties(PreparedStatement statement, ClientEntity element) throws SQLException {
         statement.setString(1, element.getSurname());
         statement.setString(2, element.getName());
         statement.setString(3, element.getPhoneNumber());
@@ -97,13 +95,13 @@ public class ClientDaoImpl extends AbstractGenericDao<Client> implements ClientD
     }
 
     @Override
-    protected void setUpdateElementProperties(PreparedStatement statement, Client element)  {
+    protected void setUpdateElementProperties(PreparedStatement statement, ClientEntity element) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected Client parseToOneElement(ResultSet resultSet) throws SQLException {
-        Client client = new Client();
+    protected ClientEntity parseToOneElement(ResultSet resultSet) throws SQLException {
+        ClientEntity client = new ClientEntity();
         client.setPersonId(resultSet.getInt("id_client"));
         client.setSurname(resultSet.getString("surname"));
         client.setName(resultSet.getString("name"));

@@ -2,8 +2,7 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.CouponDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.entity.Coupon;
-import org.apache.log4j.Logger;
+import com.taxi.model.domain.CouponEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,14 +10,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-public class CouponDaoImpl extends AbstractGenericDao<Coupon> implements CouponDao {
+public class CouponDaoImpl extends AbstractGenericDao<CouponEntity> implements CouponDao {
+
     private static final String READ_BY_ID = "SELECT * FROM  taxi_database.coupon WHERE id_coupon  =(?);";
 
     private static final String READ_BY_COUPON = "SELECT * FROM  taxi_database.coupon WHERE  coupon_name  =(?);";
 
     private static final String READ_ALL = "SELECT * FROM  taxi_database.coupon ;";
 
-    private static final Logger LOG = Logger.getLogger(CouponDaoImpl.class);
 
     public CouponDaoImpl(PoolConnection connection) {
         super(connection);
@@ -26,31 +25,31 @@ public class CouponDaoImpl extends AbstractGenericDao<Coupon> implements CouponD
 
 
     @Override
-    public Coupon findById(Integer id) {
+    public CouponEntity findById(Integer id) {
         return getElementByIntegerParam(id, READ_BY_ID);
     }
 
 
     @Override
-    public List<Coupon> findAll() {
+    public List<CouponEntity> findAll() {
         return getList(READ_ALL);
     }
 
 
     @Override
-    public Coupon findByCouponName(String couponName) {
+    public CouponEntity findByCouponName(String couponName) {
         return getElementByStringParam(couponName, READ_BY_COUPON);
     }
 
 
     @Override
-    public void create(Coupon entity) {
+    public void create(CouponEntity entity) {
         throw new UnsupportedOperationException();
     }
 
 
     @Override
-    public boolean update(Coupon coupon) {
+    public boolean update(CouponEntity coupon) {
         throw new UnsupportedOperationException();
     }
 
@@ -61,18 +60,18 @@ public class CouponDaoImpl extends AbstractGenericDao<Coupon> implements CouponD
     }
 
     @Override
-    protected void setInsertElementProperties(PreparedStatement statement, Coupon element) {
+    protected void setInsertElementProperties(PreparedStatement statement, CouponEntity element) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected void setUpdateElementProperties(PreparedStatement statement, Coupon element) {
+    protected void setUpdateElementProperties(PreparedStatement statement, CouponEntity element) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    protected Coupon parseToOneElement(ResultSet resultSet) throws SQLException {
-        Coupon coupon = new Coupon();
+    protected CouponEntity parseToOneElement(ResultSet resultSet) throws SQLException {
+        CouponEntity coupon = new CouponEntity();
 
         coupon.setIdCoupon(resultSet.getInt("id_coupon"));
         coupon.setCouponName(resultSet.getString("coupon_name"));

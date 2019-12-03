@@ -2,7 +2,7 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.DriverDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.entity.Driver;
+import com.taxi.model.domain.DriverEntity;
 import com.taxi.model.entity.enums.DriverStatus;
 import com.taxi.model.entity.enums.Role;
 import org.apache.log4j.Logger;
@@ -14,12 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class DriverDaoImpl extends AbstractGenericDao<Driver> implements DriverDao {
+public class DriverDaoImpl extends AbstractGenericDao<DriverEntity> implements DriverDao {
+
     private static final String FIND_DRIVER_BY_CAR_TYPE_AND_STATUS = "SELECT * FROM  driver, car  WHERE driver_status =(?) AND driver.id_car  = car.id_car  AND car_type =(?) limit 1;";
 
     private static final String READ_BY_PHONE_AND_PASSWORD = "SELECT * FROM  taxi_database.driver WHERE phone_number  = (?) AND password = (?);";
-
-    private static final String READ_BY_PHONE = "SELECT * FROM  taxi_database.driver WHERE phone_number  = (?) ;";
 
     private static final String READ_BY_ID = "SELECT * FROM taxi_database.driver WHERE  id_driver  =(?);";
 
@@ -28,7 +27,8 @@ public class DriverDaoImpl extends AbstractGenericDao<Driver> implements DriverD
     private static final String UPDATE = "UPDATE  taxi_database.driver SET  driver_status = ? WHERE id_driver  = ?;";
 
     private static final Logger LOG = Logger.getLogger(DriverDaoImpl.class);
-     private CarDaoImpl carDaoImpl;
+
+    private CarDaoImpl carDaoImpl;
 
     public DriverDaoImpl(PoolConnection connector, CarDaoImpl carDaoImpl) {
         super(connector);
@@ -37,20 +37,20 @@ public class DriverDaoImpl extends AbstractGenericDao<Driver> implements DriverD
 
 
     @Override
-    public Driver findById(Integer id) {
+    public DriverEntity findById(Integer id) {
         return getElementByIntegerParam(id, READ_BY_ID);
     }
 
 
     @Override
-    public List<Driver> findAll() {
+    public List<DriverEntity> findAll() {
         return getList(READ_ALL);
     }
 
 
     @Override
-    public Driver findDriverByCarTypeAndDriverStatus(DriverStatus driverStatus, String carType) {
-        Driver result = null;
+    public DriverEntity findDriverByCarTypeAndDriverStatus(DriverStatus driverStatus, String carType) {
+        DriverEntity result = null;
         try (PreparedStatement ps = connector.getConnection().prepareStatement(FIND_DRIVER_BY_CAR_TYPE_AND_STATUS)) {
             ps.setString(1, driverStatus.toString().toLowerCase());
             ps.setString(2, carType);
@@ -58,7 +58,7 @@ public class DriverDaoImpl extends AbstractGenericDao<Driver> implements DriverD
             LOG.debug("Executed query" + FIND_DRIVER_BY_CAR_TYPE_AND_STATUS);
             if (rs.next()) {
                 LOG.debug("check is rs has next");
-                result = new Driver();
+                result = new DriverEntity();
                 result = parseToOneElement(rs);
             }
         } catch (SQLException e) {
@@ -74,24 +74,18 @@ public class DriverDaoImpl extends AbstractGenericDao<Driver> implements DriverD
     }
 
     @Override
-    public Optional<Driver> findDriverByPassAndPhone(String phoneNumber, String password) {
+    public Optional<DriverEntity> findDriverByPassAndPhone(String phoneNumber, String password) {
         return Optional.ofNullable(getElementByTwoStringParam(phoneNumber, password, READ_BY_PHONE_AND_PASSWORD));
     }
 
     @Override
-    public Optional<Driver> findDriverByPass(String phoneNumber) {
-        return Optional.ofNullable(getElementByStringParam(phoneNumber, READ_BY_PHONE));
+    public boolean update(DriverEntity driver) {
+        return super.update(driver, UPDATE);
     }
 
 
     @Override
-    public boolean update(Driver driver) {
-        return super.update(driver,UPDATE);
-    }
-
-
-    @Override
-    public void create(Driver entity) {
+    public void create(DriverEntity entity) {
         throw new UnsupportedOperationException();
     }
 
@@ -103,19 +97,19 @@ public class DriverDaoImpl extends AbstractGenericDao<Driver> implements DriverD
 
 
     @Override
-    protected void setInsertElementProperties(PreparedStatement statement, Driver element) throws SQLException {
+    protected void setInsertElementProperties(PreparedStatement statement, DriverEntity element) throws SQLException {
         statement.setString(1, element.getDriverStatus().toString().toLowerCase());
     }
 
     @Override
-    protected void setUpdateElementProperties(PreparedStatement statement, Driver element) throws SQLException {
-       setInsertElementProperties(statement,element);
+    protected void setUpdateElementProperties(PreparedStatement statement, DriverEntity element) throws SQLException {
+        setInsertElementProperties(statement, element);
         statement.setInt(2, element.getPersonId());
     }
 
     @Override
-    protected Driver parseToOneElement(ResultSet resultSet) throws SQLException {
-        Driver driver = new Driver();
+    protected DriverEntity parseToOneElement(ResultSet resultSet) throws SQLException {
+        DriverEntity driver = new DriverEntity();
 
         driver.setPersonId(resultSet.getInt("id_driver"));
         driver.setSurname(resultSet.getString("surname"));

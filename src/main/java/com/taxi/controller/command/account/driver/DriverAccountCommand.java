@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class DriverAccountCommand implements Command {
 
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         return RoutesJSP.DRIVER_ACCOUNT;
