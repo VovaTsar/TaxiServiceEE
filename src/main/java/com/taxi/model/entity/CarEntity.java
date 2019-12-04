@@ -7,6 +7,17 @@ public class CarEntity {
     private String color;
     private String carType;
 
+    public CarEntity() {
+    }
+
+    public CarEntity(Integer idCar, String carNumber, String brand, String color, String carType) {
+        this.idCar = idCar;
+        this.carNumber = carNumber;
+        this.brand = brand;
+        this.color = color;
+        this.carType = carType;
+    }
+
     public Integer getIdCar() {
         return idCar;
     }

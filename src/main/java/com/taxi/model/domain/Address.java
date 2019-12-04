@@ -5,6 +5,15 @@ public class Address {
     private String street;
     private String houseNumber;
 
+    public Address() {
+    }
+
+    public Address(Integer idAddress, String street, String houseNumber) {
+        this.idAddress = idAddress;
+        this.street = street;
+        this.houseNumber = houseNumber;
+    }
+
     public int getIdAddress() {
         return idAddress;
     }

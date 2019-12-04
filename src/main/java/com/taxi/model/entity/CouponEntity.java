@@ -5,6 +5,15 @@ public class CouponEntity {
     private String couponName;
     private int discount;
 
+    public CouponEntity() {
+    }
+
+    public CouponEntity(Integer idCoupon, String couponName, int discount) {
+        this.idCoupon = idCoupon;
+        this.couponName = couponName;
+        this.discount = discount;
+    }
+
     public Integer getIdCoupon() {
         return idCoupon;
     }

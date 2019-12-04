@@ -7,6 +7,17 @@ public class Car {
     private String color;
     private String carType;
 
+    public Car() {
+    }
+
+    public Car(Integer idCar, String carNumber, String brand, String color, String carType) {
+        this.idCar = idCar;
+        this.carNumber = carNumber;
+        this.brand = brand;
+        this.color = color;
+        this.carType = carType;
+    }
+
     public int getIdCar() {
         return idCar;
     }
