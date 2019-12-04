@@ -1,7 +1,7 @@
 package com.taxi.model.mapper;
 
-import com.taxi.model.domain.AddressEntity;
-import com.taxi.model.entity.Address;
+import com.taxi.model.entity.AddressEntity;
+import com.taxi.model.domain.Address;
 
 public class AddressMapper {
 

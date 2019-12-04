@@ -2,9 +2,9 @@ package com.taxi.controller.command.account.driver;
 
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
-import com.taxi.model.entity.Driver;
-import com.taxi.model.entity.enums.DriverStatus;
-import com.taxi.model.entity.enums.OrderStatus;
+import com.taxi.model.domain.Driver;
+import com.taxi.model.domain.enums.DriverStatus;
+import com.taxi.model.domain.enums.OrderStatus;
 import com.taxi.model.myUtils.LoginedUserUtils;
 import com.taxi.model.service.DriverService;
 import com.taxi.model.service.OrderService;

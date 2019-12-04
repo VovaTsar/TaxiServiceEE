@@ -1,6 +1,6 @@
 package com.taxi.model.dao;
 
-import com.taxi.model.domain.ClientEntity;
+import com.taxi.model.entity.ClientEntity;
 
 import java.util.Optional;
 

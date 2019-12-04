@@ -1,23 +1,16 @@
 package com.taxi.model.entity;
 
-import com.taxi.model.entity.enums.DriverStatus;
-import com.taxi.model.entity.enums.Role;
+import com.taxi.model.domain.Person;
+import com.taxi.model.domain.enums.DriverStatus;
+import com.taxi.model.domain.enums.Role;
 
-public class Driver extends Person {
+public class DriverEntity extends Person {
     private DriverStatus driverStatus;
-    private Car car;
+    private CarEntity car;
     private String middleName;
 
-    public Driver() {
+    public DriverEntity() {
         this.role = Role.DRIVER;
-    }
-
-    public com.taxi.model.entity.Car getCar() {
-        return car;
-    }
-
-    public void setCar(com.taxi.model.entity.Car car) {
-        this.car = car;
     }
 
     public DriverStatus getDriverStatus() {
@@ -28,6 +21,14 @@ public class Driver extends Person {
         this.driverStatus = driverStatus;
     }
 
+    public CarEntity getCar() {
+        return car;
+    }
+
+    public void setCar(CarEntity car) {
+        this.car = car;
+    }
+
     public String getMiddleName() {
         return middleName;
     }
@@ -35,5 +36,4 @@ public class Driver extends Person {
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
-
 }

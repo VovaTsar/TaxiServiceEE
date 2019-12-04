@@ -2,9 +2,9 @@ package com.taxi.controller.command.account.client;
 
 
 import com.taxi.controller.command.Command;
-import com.taxi.model.entity.*;
-import com.taxi.model.entity.enums.DriverStatus;
-import com.taxi.model.entity.enums.OrderStatus;
+import com.taxi.model.domain.*;
+import com.taxi.model.domain.enums.DriverStatus;
+import com.taxi.model.domain.enums.OrderStatus;
 import com.taxi.model.myUtils.CookiesUtils;
 import com.taxi.model.myUtils.LoginedUserUtils;
 import com.taxi.model.myUtils.PriceVoyageUtils;

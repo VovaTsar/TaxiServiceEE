@@ -1,7 +1,7 @@
 package com.taxi.model.mapper;
 
-import com.taxi.model.domain.CouponEntity;
-import com.taxi.model.entity.Coupon;
+import com.taxi.model.entity.CouponEntity;
+import com.taxi.model.domain.Coupon;
 
 public class CouponMapper {
 

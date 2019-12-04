@@ -1,23 +1,23 @@
 package com.taxi.model.domain;
 
-import com.taxi.model.entity.enums.OrderStatus;
+import com.taxi.model.domain.enums.OrderStatus;
 
-public class OrderEntity {
+public class Order {
     private Integer idOrder;
     private OrderStatus orderStatus;
-    private ClientEntity client;
-    private DriverEntity driver;
-    private AddressEntity addressArrive;
-    private AddressEntity addressDeparture;
-    private CouponEntity coupon;
+    private Client client;
+    private Driver driver;
+    private Address addressArrive;
+    private Address addressDeparture;
+    private Coupon coupon;
     private int cost;
     private int costWithDiscount;
 
-    public OrderEntity() {
+    public Order() {
     }
 
-    public OrderEntity(OrderStatus orderStatus, ClientEntity client, DriverEntity driver, AddressEntity addressArrive,
-                       AddressEntity addressDeparture, CouponEntity coupon, int cost, int costWithDiscount) {
+    public Order(OrderStatus orderStatus, Client client, Driver driver, Address addressArrive,
+                 Address addressDeparture, Coupon coupon, int cost, int costWithDiscount) {
         this.orderStatus = orderStatus;
         this.client = client;
         this.driver = driver;
@@ -28,7 +28,7 @@ public class OrderEntity {
         this.costWithDiscount = costWithDiscount;
     }
 
-    public Integer getIdOrder() {
+    public int getIdOrder() {
         return idOrder;
     }
 
@@ -44,43 +44,43 @@ public class OrderEntity {
         this.orderStatus = orderStatus;
     }
 
-    public ClientEntity getClient() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClient(ClientEntity client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 
-    public DriverEntity getDriver() {
+    public Driver getDriver() {
         return driver;
     }
 
-    public void setDriver(DriverEntity driver) {
+    public void setDriver(Driver driver) {
         this.driver = driver;
     }
 
-    public AddressEntity getAddressArrive() {
+    public Address getAddressArrive() {
         return addressArrive;
     }
 
-    public void setAddressArrive(AddressEntity addressArrive) {
+    public void setAddressArrive(Address addressArrive) {
         this.addressArrive = addressArrive;
     }
 
-    public AddressEntity getAddressDeparture() {
+    public Address getAddressDeparture() {
         return addressDeparture;
     }
 
-    public void setAddressDeparture(AddressEntity addressDeparture) {
+    public void setAddressDeparture(Address addressDeparture) {
         this.addressDeparture = addressDeparture;
     }
 
-    public CouponEntity getCoupon() {
+    public Coupon getCoupon() {
         return coupon;
     }
 
-    public void setCoupon(CouponEntity coupon) {
+    public void setCoupon(Coupon coupon) {
         this.coupon = coupon;
     }
 
@@ -99,4 +99,6 @@ public class OrderEntity {
     public void setCostWithDiscount(int costWithDiscount) {
         this.costWithDiscount = costWithDiscount;
     }
+
+
 }

@@ -2,8 +2,8 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.ClientDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.domain.ClientEntity;
-import com.taxi.model.entity.enums.Role;
+import com.taxi.model.entity.ClientEntity;
+import com.taxi.model.domain.enums.Role;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

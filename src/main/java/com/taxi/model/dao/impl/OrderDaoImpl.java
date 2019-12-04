@@ -2,10 +2,10 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.*;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.domain.CouponEntity;
-import com.taxi.model.domain.DriverEntity;
-import com.taxi.model.domain.OrderEntity;
-import com.taxi.model.entity.enums.OrderStatus;
+import com.taxi.model.entity.CouponEntity;
+import com.taxi.model.entity.DriverEntity;
+import com.taxi.model.entity.OrderEntity;
+import com.taxi.model.domain.enums.OrderStatus;
 import org.apache.log4j.Logger;
 
 import java.sql.PreparedStatement;

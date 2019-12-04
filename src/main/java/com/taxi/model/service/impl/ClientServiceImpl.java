@@ -1,8 +1,8 @@
 package com.taxi.model.service.impl;
 
 import com.taxi.model.dao.ClientDao;
-import com.taxi.model.domain.ClientEntity;
-import com.taxi.model.entity.Client;
+import com.taxi.model.entity.ClientEntity;
+import com.taxi.model.domain.Client;
 import com.taxi.model.exception.EmailIsAlreadyTaken;
 import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.exception.InvalidDataRuntimeException;
@@ -51,7 +51,7 @@ public class ClientServiceImpl implements ClientService {
             throw new PhoneNumberIsAlreadyTaken("This phone number is already registered");
         }
 
-        clientDao.create(clientMapper.clientToClientEntity(client));
+        clientDao.create(clientMapper.clientToClientEntityWithoutId(client));
 
     }
 

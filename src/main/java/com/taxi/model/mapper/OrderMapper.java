@@ -1,7 +1,7 @@
 package com.taxi.model.mapper;
 
-import com.taxi.model.domain.OrderEntity;
-import com.taxi.model.entity.Order;
+import com.taxi.model.entity.OrderEntity;
+import com.taxi.model.domain.Order;
 
 public class OrderMapper {
 

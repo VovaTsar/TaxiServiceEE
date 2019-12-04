@@ -2,8 +2,8 @@ package com.taxi.controller.command.account.driver;
 
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
-import com.taxi.model.entity.Person;
-import com.taxi.model.entity.enums.Role;
+import com.taxi.model.domain.Person;
+import com.taxi.model.domain.enums.Role;
 import com.taxi.model.myUtils.EncoderPassword;
 import com.taxi.model.myUtils.LoginedUserUtils;
 import com.taxi.model.service.ClientService;

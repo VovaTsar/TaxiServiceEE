@@ -1,6 +1,6 @@
 package com.taxi.model.myUtils;
 
-import com.taxi.model.entity.enums.Role;
+import com.taxi.model.domain.enums.Role;
 
 import java.util.*;
 

@@ -1,7 +1,7 @@
 package com.taxi.model.myUtils;
 
-import com.taxi.model.entity.Address;
-import com.taxi.model.entity.Coupon;
+import com.taxi.model.domain.Address;
+import com.taxi.model.domain.Coupon;
 
 import java.util.Objects;
 

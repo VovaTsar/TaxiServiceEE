@@ -1,4 +1,4 @@
-package com.taxi.model.domain;
+package com.taxi.model.entity;
 
 public class CarEntity {
     private Integer idCar;

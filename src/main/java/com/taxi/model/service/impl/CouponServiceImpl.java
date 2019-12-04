@@ -1,7 +1,7 @@
 package com.taxi.model.service.impl;
 
 import com.taxi.model.dao.CouponDao;
-import com.taxi.model.entity.Coupon;
+import com.taxi.model.domain.Coupon;
 import com.taxi.model.mapper.CouponMapper;
 import com.taxi.model.service.CouponService;
 

@@ -1,7 +1,7 @@
 package com.taxi.model.service;
 
-import com.taxi.model.entity.*;
-import com.taxi.model.entity.enums.OrderStatus;
+import com.taxi.model.domain.*;
+import com.taxi.model.domain.enums.OrderStatus;
 
 import java.util.List;
 

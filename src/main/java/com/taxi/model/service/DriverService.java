@@ -1,7 +1,7 @@
 package com.taxi.model.service;
 
-import com.taxi.model.entity.Driver;
-import com.taxi.model.entity.enums.DriverStatus;
+import com.taxi.model.domain.Driver;
+import com.taxi.model.domain.enums.DriverStatus;
 
 public interface DriverService {
 

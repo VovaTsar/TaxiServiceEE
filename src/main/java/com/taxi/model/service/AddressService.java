@@ -1,6 +1,6 @@
 package com.taxi.model.service;
 
-import com.taxi.model.entity.Address;
+import com.taxi.model.domain.Address;
 
 import java.util.List;
 
