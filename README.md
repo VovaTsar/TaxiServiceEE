@@ -7,10 +7,10 @@ The customer is logged in and can create a Taxi order by specifying the address 
 ## Instalation and running
 
 ### Prerequisites
->JDK, JRE 8 or later
->Apache Maven
->Apache Tomcat
->MySQL
+>JDK, JRE 8 or later,
+>Apache Maven,
+>Apache Tomcat,
+>MySQL.
 
 ## Set up
 >Clone the project to local reposiroty and build .war using Maven command: mvn clean package -DskipTests.
