@@ -5,6 +5,15 @@ public class AddressEntity {
     private String street;
     private String houseNumber;
 
+    public AddressEntity() {
+    }
+
+    public AddressEntity(Integer idAddress, String street, String houseNumber) {
+        this.idAddress = idAddress;
+        this.street = street;
+        this.houseNumber = houseNumber;
+    }
+
     public Integer getIdAddress() {
         return idAddress;
     }

@@ -5,17 +5,17 @@
 
 ##Instalation and running
 ###Prerequisites
->JDK, JRE 8 or later
->Apache Maven
->Apache Tomcat
->MySQL
+-JDK, JRE 8 or later
+-Apache Maven
+-Apache Tomcat
+-MySQL
 ##Set up
->Clone the project to local reposiroty and build .war using Maven command: mvn clean package -DskipTests.
->Create database using taxi_database.sql file. 
->Deploy .war file to Apache Tomcat.
+-Clone the project to local reposiroty and build .war using Maven command: mvn clean package -DskipTests.
+-Create database using taxi_database.sql file. 
+-Deploy .war file to Apache Tomcat.
 ##Data for login User
->Phone:+380975240365
->Password: cerber
+-Phone:+380975240365
+-Password: cerber
 ##Data for login Driver
->Phone:+380979111874
->Password: cerber
+-Phone:+380979111874
+-Password: cerber

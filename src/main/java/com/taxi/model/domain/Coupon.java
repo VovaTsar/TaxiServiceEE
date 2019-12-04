@@ -5,6 +5,15 @@ public class Coupon {
     private String couponName;
     private int discount;
 
+    public Coupon() {
+    }
+
+    public Coupon(Integer idCoupon, String couponName, int discount) {
+        this.idCoupon = idCoupon;
+        this.couponName = couponName;
+        this.discount = discount;
+    }
+
     public int getIdCoupon() {
         return idCoupon;
     }

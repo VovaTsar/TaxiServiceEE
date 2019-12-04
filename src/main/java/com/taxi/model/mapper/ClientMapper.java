@@ -4,6 +4,7 @@ import com.taxi.model.entity.ClientEntity;
 import com.taxi.model.domain.Client;
 
 public class ClientMapper {
+
     public Client clientEntityToClient(ClientEntity clientEntity) {
         if (clientEntity == null) {
             return null;
