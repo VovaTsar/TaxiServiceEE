@@ -2,7 +2,7 @@ package com.taxi.controller.command.account.client;
 
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
-import com.taxi.model.entity.Address;
+import com.taxi.model.domain.Address;
 import com.taxi.model.service.AddressService;
 
 import javax.servlet.http.HttpServletRequest;

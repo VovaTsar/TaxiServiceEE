@@ -1,11 +1,11 @@
 package com.taxi.model.domain;
 
-public class AddressEntity {
+public class Address {
     private Integer idAddress;
     private String street;
     private String houseNumber;
 
-    public Integer getIdAddress() {
+    public int getIdAddress() {
         return idAddress;
     }
 
@@ -28,4 +28,6 @@ public class AddressEntity {
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
     }
+
+
 }

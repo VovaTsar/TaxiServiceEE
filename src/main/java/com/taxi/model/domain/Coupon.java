@@ -1,4 +1,4 @@
-package com.taxi.model.entity;
+package com.taxi.model.domain;
 
 public class Coupon {
     private Integer idCoupon;

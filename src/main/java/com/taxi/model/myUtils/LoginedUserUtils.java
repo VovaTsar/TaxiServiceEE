@@ -1,6 +1,6 @@
 package com.taxi.model.myUtils;
 
-import com.taxi.model.entity.Person;
+import com.taxi.model.domain.Person;
 
 import javax.servlet.http.HttpSession;
 

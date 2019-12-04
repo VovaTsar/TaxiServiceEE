@@ -1,7 +1,7 @@
 package com.taxi.model.mapper;
 
-import com.taxi.model.domain.ClientEntity;
-import com.taxi.model.entity.Client;
+import com.taxi.model.entity.ClientEntity;
+import com.taxi.model.domain.Client;
 
 public class ClientMapper {
     public Client clientEntityToClient(ClientEntity clientEntity) {
@@ -33,6 +33,23 @@ public class ClientMapper {
         clientEntity.setPassword(client.getPassword());
         clientEntity.setEmail(client.getEmail());
         clientEntity.setPhoneNumber(client.getPhoneNumber());
+        clientEntity.setRole(client.getRole());
+
+        return clientEntity;
+    }
+
+    public ClientEntity clientToClientEntityWithoutId(Client client) {
+        if (client == null) {
+            return null;
+        }
+        ClientEntity clientEntity = new ClientEntity();
+
+
+        clientEntity.setName(client.getName());
+        clientEntity.setSurname(client.getSurname());
+        clientEntity.setPassword(client.getPassword());
+        clientEntity.setPhoneNumber(client.getPhoneNumber());
+        clientEntity.setEmail(client.getEmail());
         clientEntity.setRole(client.getRole());
 
         return clientEntity;

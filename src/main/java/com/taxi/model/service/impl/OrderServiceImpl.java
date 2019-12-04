@@ -1,9 +1,9 @@
 package com.taxi.model.service.impl;
 
 import com.taxi.model.dao.OrderDao;
-import com.taxi.model.domain.OrderEntity;
-import com.taxi.model.entity.Order;
-import com.taxi.model.entity.enums.OrderStatus;
+import com.taxi.model.entity.OrderEntity;
+import com.taxi.model.domain.Order;
+import com.taxi.model.domain.enums.OrderStatus;
 import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.mapper.OrderMapper;
 import com.taxi.model.service.OrderService;

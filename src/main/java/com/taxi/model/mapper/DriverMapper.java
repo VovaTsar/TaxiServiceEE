@@ -1,7 +1,7 @@
 package com.taxi.model.mapper;
 
-import com.taxi.model.domain.DriverEntity;
-import com.taxi.model.entity.Driver;
+import com.taxi.model.entity.DriverEntity;
+import com.taxi.model.domain.Driver;
 
 public class DriverMapper {
 

@@ -1,7 +1,7 @@
 package com.taxi.model.dao;
 
-import com.taxi.model.domain.DriverEntity;
-import com.taxi.model.entity.enums.DriverStatus;
+import com.taxi.model.entity.DriverEntity;
+import com.taxi.model.domain.enums.DriverStatus;
 
 import java.util.Optional;
 

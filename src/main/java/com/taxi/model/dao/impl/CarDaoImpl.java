@@ -2,7 +2,7 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.CarDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.domain.CarEntity;
+import com.taxi.model.entity.CarEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

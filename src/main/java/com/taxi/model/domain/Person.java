@@ -1,6 +1,6 @@
-package com.taxi.model.entity;
+package com.taxi.model.domain;
 
-import com.taxi.model.entity.enums.Role;
+import com.taxi.model.domain.enums.Role;
 
 public abstract class Person {
     protected Integer personId;

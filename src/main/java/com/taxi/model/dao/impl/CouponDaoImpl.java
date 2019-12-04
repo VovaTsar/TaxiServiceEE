@@ -2,7 +2,7 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.CouponDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.domain.CouponEntity;
+import com.taxi.model.entity.CouponEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

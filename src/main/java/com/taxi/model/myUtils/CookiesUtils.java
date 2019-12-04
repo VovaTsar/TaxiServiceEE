@@ -1,6 +1,6 @@
 package com.taxi.model.myUtils;
 
-import com.taxi.model.entity.Driver;
+import com.taxi.model.domain.Driver;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

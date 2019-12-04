@@ -2,9 +2,9 @@ package com.taxi.model.dao.impl;
 
 import com.taxi.model.dao.DriverDao;
 import com.taxi.model.dao.connection.PoolConnection;
-import com.taxi.model.domain.DriverEntity;
-import com.taxi.model.entity.enums.DriverStatus;
-import com.taxi.model.entity.enums.Role;
+import com.taxi.model.entity.DriverEntity;
+import com.taxi.model.domain.enums.DriverStatus;
+import com.taxi.model.domain.enums.Role;
 import org.apache.log4j.Logger;
 
 import java.sql.PreparedStatement;

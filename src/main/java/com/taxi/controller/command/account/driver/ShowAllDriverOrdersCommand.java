@@ -2,7 +2,7 @@ package com.taxi.controller.command.account.driver;
 
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
-import com.taxi.model.entity.Order;
+import com.taxi.model.domain.Order;
 import com.taxi.model.myUtils.LoginedUserUtils;
 import com.taxi.model.service.OrderService;
 

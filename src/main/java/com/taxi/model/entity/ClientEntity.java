@@ -1,7 +1,7 @@
-package com.taxi.model.domain;
+package com.taxi.model.entity;
 
-import com.taxi.model.entity.Person;
-import com.taxi.model.entity.enums.Role;
+import com.taxi.model.domain.Person;
+import com.taxi.model.domain.enums.Role;
 
 public class ClientEntity extends Person {
     private String email;

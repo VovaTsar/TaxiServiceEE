@@ -3,7 +3,7 @@ package com.taxi.controller.command.account.client;
 
 import com.taxi.controller.command.Command;
 import com.taxi.controller.command.RoutesJSP;
-import com.taxi.model.entity.Client;
+import com.taxi.model.domain.Client;
 import com.taxi.model.exception.EmailIsAlreadyTaken;
 import com.taxi.model.exception.PhoneNumberIsAlreadyTaken;
 import com.taxi.model.myUtils.EncoderPassword;
