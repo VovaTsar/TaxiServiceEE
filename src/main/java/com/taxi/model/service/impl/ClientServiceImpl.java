@@ -26,7 +26,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public boolean isClientAlreadyExist(String phoneNumber, String password) {
-        if (Objects.isNull(phoneNumber) || Objects.isNull(password)) {
+        if (phoneNumber.isEmpty() || password.isEmpty()) {
             LOG.warn("PhoneNumber or password is empty");
             throw new InvalidDataRuntimeException("PhoneNumber or password is empty");
         }
@@ -35,7 +35,7 @@ public class ClientServiceImpl implements ClientService {
 
     }
 
-    public void createClientInDatabase(Client client) throws EmailIsAlreadyTaken, PhoneNumberIsAlreadyTaken {
+    public void createClientInDatabase(Client client) {
         if (Objects.isNull(client)) {
             LOG.warn("creating ClientDaoImpl createClientInDatabase");
             throw new InputDataUnCorrectRuntimeException("Client is empty");
