@@ -32,6 +32,7 @@ public class ClientServiceImplTest {
     private static final Client CLIENT = getClient();
 
     private static final boolean CLIENT_EXIST = true;
+
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 

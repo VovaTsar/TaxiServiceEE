@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAllOrderByIdDriver(Integer idDriver, int row, int limit) {
         if (idDriver < 0 || row < 0 || limit < 0) {
             LOG.warn("OrderServiceImpl getAllOrderByIdDriver");
-            throw new InputDataUnCorrectRuntimeException("idDriver, row,limit must be positive");
+            throw new InputDataUnCorrectRuntimeException("IdDriver, row,limit must be positive");
         }
         List<OrderEntity> orderEntities = orderDao.findAllOrdersByDriverId(idDriver, row, limit);
 

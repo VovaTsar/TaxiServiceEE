@@ -20,7 +20,8 @@ public class CouponServiceImpl implements CouponService {
             return null;
         }
 
-        return couponMapper.couponEntityToCoupon(couponDao.findByCouponName(couponName));
+        return couponMapper.couponEntityToCoupon(couponDao
+                .findByCouponName(couponName));
 
     }
 }
