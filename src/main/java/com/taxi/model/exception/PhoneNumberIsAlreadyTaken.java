@@ -1,6 +1,6 @@
 package com.taxi.model.exception;
 
-public class PhoneNumberIsAlreadyTaken extends Exception {
+public class PhoneNumberIsAlreadyTaken extends RuntimeException {
 
     public PhoneNumberIsAlreadyTaken() { }
 

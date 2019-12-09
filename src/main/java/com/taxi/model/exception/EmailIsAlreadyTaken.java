@@ -1,7 +1,7 @@
 package com.taxi.model.exception;
 
 
-public class EmailIsAlreadyTaken extends Exception {
+public class EmailIsAlreadyTaken extends RuntimeException {
 
     public EmailIsAlreadyTaken() { }
 
