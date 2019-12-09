@@ -1,6 +1,7 @@
 package com.taxi.model.myUtils;
 
 import com.taxi.model.domain.Driver;
+import com.taxi.model.exception.InvalidDataRuntimeException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -21,19 +22,28 @@ public class CookiesUtils {
     private CookiesUtils() {
     }
 
-    public static String readCookie(HttpServletRequest request, String key) throws UnsupportedEncodingException {
+    public static String readCookie(HttpServletRequest request, String key) {
         Cookie[] cookies = request.getCookies();
         for (Cookie c : cookies) {
             if (key.equals(c.getName())) {
-                return URLDecoder.decode(c.getValue(), ENCODING);
+                try {
+                    return URLDecoder.decode(c.getValue(), ENCODING);
+                } catch (UnsupportedEncodingException e) {
+                    throw new InvalidDataRuntimeException();
+                }
             }
         }
         return null;
     }
 
     public static void addCookies(HttpServletResponse response,
-                                  Driver driver, int price, int timeWait) throws UnsupportedEncodingException {
-        String safeName = URLEncoder.encode(driver.getName(), ENCODING);
+                                  Driver driver, int price, int timeWait) {
+        String safeName = null;
+        try {
+            safeName = URLEncoder.encode(driver.getName(), ENCODING);
+        } catch (UnsupportedEncodingException e) {
+            throw new InvalidDataRuntimeException();
+        }
         String phoneDriver = driver.getPhoneNumber();
         String priceStr = price + "";
         String timeWaitStr = timeWait + "";
