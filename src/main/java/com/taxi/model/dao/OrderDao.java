@@ -1,7 +1,7 @@
 package com.taxi.model.dao;
 
-import com.taxi.model.entity.OrderEntity;
 import com.taxi.model.domain.enums.OrderStatus;
+import com.taxi.model.entity.OrderEntity;
 
 import java.util.List;
 

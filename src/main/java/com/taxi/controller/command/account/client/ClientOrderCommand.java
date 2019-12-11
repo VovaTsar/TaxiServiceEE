@@ -11,6 +11,7 @@ import java.util.List;
 
 
 public class ClientOrderCommand implements Command {
+
     private AddressService addressService;
 
     public ClientOrderCommand(AddressService addressService) {

@@ -1,8 +1,8 @@
 package com.taxi.model.service.impl;
 
 import com.taxi.model.dao.AddressDao;
-import com.taxi.model.entity.AddressEntity;
 import com.taxi.model.domain.Address;
+import com.taxi.model.entity.AddressEntity;
 import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.exception.InvalidDataRuntimeException;
 import com.taxi.model.mapper.AddressMapper;

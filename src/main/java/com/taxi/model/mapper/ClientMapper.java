@@ -1,7 +1,7 @@
 package com.taxi.model.mapper;
 
-import com.taxi.model.entity.ClientEntity;
 import com.taxi.model.domain.Client;
+import com.taxi.model.entity.ClientEntity;
 
 public class ClientMapper {
 

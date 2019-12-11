@@ -2,7 +2,8 @@ package com.taxi.model.exception;
 
 public class InvalidDataRuntimeException extends RuntimeException {
 
-    public InvalidDataRuntimeException() { }
+    public InvalidDataRuntimeException() {
+    }
 
     public InvalidDataRuntimeException(String message) {
         super(message);

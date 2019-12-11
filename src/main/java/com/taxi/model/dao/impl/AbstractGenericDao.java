@@ -152,21 +152,6 @@ public abstract class AbstractGenericDao<E> {
         return false;
     }
 
-    protected boolean isExistWithIntegerAndStringParametr(Integer id, String data, String query) {
-
-        try (Connection connection = connector.getConnection();
-             PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setInt(1, id);
-            ps.setString(2, data);
-            final ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return true;
-            }
-        } catch (SQLException e) {
-            LOGGER.warn("SQLException isExist", e);
-        }
-        return false;
-    }
 
     protected abstract void setInsertElementProperties(PreparedStatement statement, E element) throws SQLException;
 

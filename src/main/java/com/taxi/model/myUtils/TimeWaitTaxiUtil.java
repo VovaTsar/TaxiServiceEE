@@ -1,7 +1,6 @@
 package com.taxi.model.myUtils;
 
 
-
 public class TimeWaitTaxiUtil {
 
     private TimeWaitTaxiUtil() {

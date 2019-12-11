@@ -2,7 +2,8 @@ package com.taxi.model.exception;
 
 public class WrongPasswordOrPhoneNumber extends Exception {
 
-    public WrongPasswordOrPhoneNumber() { }
+    public WrongPasswordOrPhoneNumber() {
+    }
 
     public WrongPasswordOrPhoneNumber(String message) {
         super(message);

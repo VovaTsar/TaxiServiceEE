@@ -1,7 +1,7 @@
 package com.taxi.model.mapper;
 
-import com.taxi.model.entity.CarEntity;
 import com.taxi.model.domain.Car;
+import com.taxi.model.entity.CarEntity;
 
 public class CarMapper {
 

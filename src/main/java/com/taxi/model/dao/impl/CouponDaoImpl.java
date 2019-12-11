@@ -29,30 +29,25 @@ public class CouponDaoImpl extends AbstractGenericDao<CouponEntity> implements C
         return getElementByIntegerParam(id, READ_BY_ID);
     }
 
-
     @Override
     public List<CouponEntity> findAll() {
         return getList(READ_ALL);
     }
-
 
     @Override
     public CouponEntity findByCouponName(String couponName) {
         return getElementByStringParam(couponName, READ_BY_COUPON);
     }
 
-
     @Override
     public void create(CouponEntity entity) {
         throw new UnsupportedOperationException();
     }
 
-
     @Override
     public boolean update(CouponEntity coupon) {
         throw new UnsupportedOperationException();
     }
-
 
     @Override
     public boolean delete(Integer id) {

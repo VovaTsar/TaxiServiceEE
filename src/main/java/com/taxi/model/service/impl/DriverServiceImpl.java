@@ -1,9 +1,9 @@
 package com.taxi.model.service.impl;
 
 import com.taxi.model.dao.DriverDao;
-import com.taxi.model.entity.DriverEntity;
 import com.taxi.model.domain.Driver;
 import com.taxi.model.domain.enums.DriverStatus;
+import com.taxi.model.entity.DriverEntity;
 import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.exception.InvalidDataRuntimeException;
 import com.taxi.model.mapper.DriverMapper;

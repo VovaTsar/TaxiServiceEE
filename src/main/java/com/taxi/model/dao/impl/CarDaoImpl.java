@@ -27,7 +27,6 @@ public class CarDaoImpl extends AbstractGenericDao<CarEntity> implements CarDao 
         return getElementByIntegerParam(id, READ_BY_ID);
     }
 
-
     @Override
     public List<CarEntity> findAll() {
         return getList(READ_ALL);
@@ -47,7 +46,6 @@ public class CarDaoImpl extends AbstractGenericDao<CarEntity> implements CarDao 
     public boolean delete(Integer id) {
         throw new UnsupportedOperationException();
     }
-
 
     @Override
     protected void setInsertElementProperties(PreparedStatement statement, CarEntity element) {

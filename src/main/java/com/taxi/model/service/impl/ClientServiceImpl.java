@@ -1,8 +1,8 @@
 package com.taxi.model.service.impl;
 
 import com.taxi.model.dao.ClientDao;
-import com.taxi.model.entity.ClientEntity;
 import com.taxi.model.domain.Client;
+import com.taxi.model.entity.ClientEntity;
 import com.taxi.model.exception.EmailIsAlreadyTaken;
 import com.taxi.model.exception.InputDataUnCorrectRuntimeException;
 import com.taxi.model.exception.InvalidDataRuntimeException;
