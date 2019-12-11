@@ -2,7 +2,8 @@ package com.taxi.model.exception;
 
 public class EncodePasswordRuntimeException extends RuntimeException {
 
-    public EncodePasswordRuntimeException() { }
+    public EncodePasswordRuntimeException() {
+    }
 
     public EncodePasswordRuntimeException(String message) {
         super(message);

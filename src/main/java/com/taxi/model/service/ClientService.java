@@ -1,8 +1,8 @@
 package com.taxi.model.service;
 
+import com.taxi.model.domain.Client;
 import com.taxi.model.exception.EmailIsAlreadyTaken;
 import com.taxi.model.exception.PhoneNumberIsAlreadyTaken;
-import com.taxi.model.domain.Client;
 
 public interface ClientService {
 

@@ -17,5 +17,4 @@ public class Client extends Person {
         this.email = email;
     }
 
-
 }

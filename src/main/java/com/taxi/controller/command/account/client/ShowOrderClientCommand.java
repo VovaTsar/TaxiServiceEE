@@ -8,14 +8,14 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 
 public class ShowOrderClientCommand implements Command {
+
     private final Logger LOGGER = Logger.getLogger(ShowOrderClientCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response)  {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String driverName = CookiesUtils.readCookie(request, CookiesUtils.DRIVER_NAME);
         String phoneNumber = CookiesUtils.readCookie(request, CookiesUtils.DRIVER_PHONE);
         String priceVoyage = CookiesUtils.readCookie(request, CookiesUtils.PRICE_VOYAGE);

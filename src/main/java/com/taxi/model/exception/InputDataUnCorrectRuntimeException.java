@@ -2,7 +2,8 @@ package com.taxi.model.exception;
 
 public class InputDataUnCorrectRuntimeException extends RuntimeException {
 
-    public InputDataUnCorrectRuntimeException() { }
+    public InputDataUnCorrectRuntimeException() {
+    }
 
     public InputDataUnCorrectRuntimeException(String message) {
         super(message);

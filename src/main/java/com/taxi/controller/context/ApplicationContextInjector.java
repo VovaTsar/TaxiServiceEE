@@ -24,6 +24,7 @@ import java.util.Map;
 import static com.taxi.controller.command.PathCommand.*;
 
 public class ApplicationContextInjector {
+
     private static final PoolConnection CONNECTOR = new PoolConnection();
     private static final EncoderPassword ENCODER_PASSWORD = new EncoderPassword();
 
